@@ -7,18 +7,21 @@ import mimetypes
 def lambda_handler(event, context):
     sns = boto3.resource('sns')
     topic = sns.Topic('arn:aws:sns:us-west-2:597986669661:deployPortfolioTopic')
+
+    location = {
+        "bucketName": 'portfoliobuild.ktptran.com',
+        "objectKey": 'portfoliobuild.zip'
+    }
     try:
-        job = event.get("CodePipeline.job")
-        location = {
-            "bucketName": 'portfoliobuild.ktptran.com',
-            "objectKey": 'portfoliobuild.zip'
-        }
+        job = event["CodePipeline.job"]
         if job:
             for artifact in job["data"]["inputArtifacts"]:
-                if artifact["name"] == "MyAppBuild":
+                if artifact["name"] == "BuildArtifact":
                     location = artifact["location"]["s3Location"]
+
         s3 = boto3.resource('s3', config=Config(signature_version='s3v4'))
-        print("Building portfolio from " + str(location))
+
+        print(location["bucketName"], location["objectKey"])
         portfolio_bucket = s3.Bucket('portfolio.ktptran.com')
         build_bucket = s3.Bucket(location["bucketName"])
 
