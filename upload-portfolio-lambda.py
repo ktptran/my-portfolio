@@ -13,11 +13,12 @@ def lambda_handler(event, context):
         "objectKey": 'portfoliobuild.zip'
     }
     try:
-        job = event["CodePipeline.job"]
+        job = event.get("CodePipeline.job")
         if job:
             for artifact in job["data"]["inputArtifacts"]:
                 if artifact["name"] == "BuildArtifact":
                     location = artifact["location"]["s3Location"]
+                    print('Copied file from CodePipeline')
 
         s3 = boto3.resource('s3', config=Config(signature_version='s3v4'))
 
@@ -43,4 +44,4 @@ def lambda_handler(event, context):
         topic.publish(Subject="Portfolio Deploy Failed", Message="The portfolio was not deployed successfully!")
         raise
 
-    return 'Hello from Lambda'
+    return 'Hello from Lambda, job finished.'
