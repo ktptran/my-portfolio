@@ -13,7 +13,7 @@ def lambda_handler(event, context):
         "objectKey": 'portfoliobuild.zip'
     }
     try:
-        job = event.get("CodePipeline.job")
+        job = event["CodePipeline.job"]
         if job:
             for artifact in job["data"]["inputArtifacts"]:
                 if artifact["name"] == "BuildArtifact":
