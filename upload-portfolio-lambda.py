@@ -13,11 +13,13 @@ def lambda_handler(event, context):
         "objectKey": 'portfoliobuild.zip'
     }
     try:
+        print(event)
         job = event["CodePipeline.job"]
         if job:
             for artifact in job["data"]["inputArtifacts"]:
                 if artifact["name"] == "BuildArtifact":
                     location = artifact["location"]["s3Location"]
+                    print('Changed base directory')
 
         s3 = boto3.resource('s3', config=Config(signature_version='s3v4'))
 
