@@ -7,7 +7,7 @@ This website is hosted on Amazon Web Services and uses the following services to
 3. AWS Certificate Manager for TLS/SSL security
 4. Amazon S3 to host static websites
 
-![Website Hosting Diagram](https://github.com/ktptran/websites/blob/master/Portfolio%20Website/Hosting%20Website.png?raw=true)
+![Website Hosting Diagram](https://github.com/ktptran/my-portfolio/blob/master/pic/Hosting%20Website.png)
 
 ## Documents
 Within here, you will find the following documents that create the home page.
