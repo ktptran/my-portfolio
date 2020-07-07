@@ -24,7 +24,7 @@ def lambda_handler(event, context):
         s3 = boto3.resource('s3', config=Config(signature_version='s3v4'))
 
         print(location["bucketName"], location["objectKey"])
-        portfolio_bucket = s3.Bucket('portfolio.ktptran.com')
+        portfolio_bucket = s3.Bucket('ktptran.com')
         build_bucket = s3.Bucket(location["bucketName"])
 
         portfolio_zip = io.BytesIO()
