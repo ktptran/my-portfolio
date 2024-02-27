@@ -1,5 +1,6 @@
 # Environment
 scripts/secret_env.sh
+scripts/secret_env.sh-e
 
 # Logs
 logs
