@@ -1,8 +1,72 @@
 # Portfolio Website
 
-## Web Hosting (Frontend)
+## Introduction
 
-This website is hosted on Amazon Web Services and uses the following services to reach you through https://ktptran.com/ and https://www.ktptran.com:
+Want to get to know who Kevin Tran is or launch your own portfolio website in an automated fashion?
+
+This project provides a CI/CD pipeline for deploying a static website using Amazon Web Services.
+
+### Objectives & Key Results
+
+1. Provide a platform to convey a static website.
+2. Automated deployment upon pushing to the master branch.
+
+### Key Performance Indicators
+
+1. Deploy the updated version of the website within minutes.
+
+## Launch Configurations
+
+### Pre-requisites
+
+- python == 3.11
+- aws-cli
+- aws-cdk >= 2.128.0
+- git
+- jq >= 1.7.1
+
+Run the following command:
+
+```bash
+aws configure
+```
+
+### Deployment
+
+Generate the `secret_env.sh` using the following commands:
+
+```bash
+EMAIL=test@example.com
+GITHUB_OWNER="example"
+GITHUB_REPO="my-portfolio"
+./scripts/generate_secret_env.sh $EMAIL $GITHUB_OWNER $GITHUB_REPO
+```
+
+Then, run the following command to build and deploy the portfolio application:
+
+```bash
+./scripts/deploy.sh
+```
+
+### Teardown
+
+## Architecture Overview
+
+### Code Layout
+
+| Path         | Description                                                    |
+| :----------- | :------------------------------------------------------------- |
+| cdk/         | AWS CDK source code                                            |
+| cicd/        | Lambda and CodeBuild processing code                           |
+| docs/assets/ | supporting assets for documentation.                           |
+| frontend/    | source code for React frontend                                 |
+| scripts/     | shell scripts to build, deploy, and interact with the project. |
+
+### Architecture Diagram
+
+**Frontend**
+
+This website is hosted using Amazon Web Services.
 
 1. Amazon Route 53 for DNS routing
 2. Amazon CloudFront for content distribution and caching
@@ -11,16 +75,9 @@ This website is hosted on Amazon Web Services and uses the following services to
 
 ![Frontend Diagram](docs/assets/Frontend.png)
 
-The documents used for the frontend include:
+**CI/CD**
 
-1. Content - home.html
-2. Styling - home.css
-3. Animations & Functions - script.js
-4. Pictures - pic/\*
-
-## Automated Deployment (Backend)
-
-On the backend of the system, we are using a number of AWS services to automate deployment whenever edits are made to github.
+Behind the scenes we are using the following services to automate deployment whenever updates are pushed to the master branch:
 
 1. CodePipeline is notified of the changes in Github.
 2. CodeBuild is notified by CodePipeline and zips the files together into an S3 bucket.
@@ -28,16 +85,3 @@ On the backend of the system, we are using a number of AWS services to automate 
    After this is processed, lambda uses SNS to notify me about the deployment success.
 
 ![Backend Diagram](docs/assets/Backend.png)
-
-The documents used for backend include:
-
-1. Build file - buildspec.yml
-2. Lambda code - upload-portfolio-lambda.py
-
-## Future Plans
-
-In the future, I am looking to expand the website to satisfy the following functions:
-
-1. Blog webpage for sharing about knowledge through React.js
-2. System for requesting books through DynamoDB, Lambda, and API gateway
-3. Login system through Cognito
