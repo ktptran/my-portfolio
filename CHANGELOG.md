@@ -1,0 +1,31 @@
+- feat: added in deployment configurations
+- docs: updated README.md
+- feat: generate secret environment shell script
+- feat: reorganized files and inputted in for cdk dpeloyment
+- Updated
+- Took out facebook
+- Changed email
+- Updated README.md
+- Small changes in repositories
+- Final test
+- Does this work?
+- Test 2
+- Test
+- Merge branch 'master' of https://github.com/ktptran/my-portfolio
+- Moved files
+- Update README.md
+- Updated with portfolio
+- Testing if codepipeline works
+- Small edit
+- Small edit
+- Small edit
+- Is this working?
+- Edited
+- Made changes
+- Use SNS to notify when portfolio is deployed
+- Update portfolio deployment for lambda
+- Add upload portfolio script
+- Add buildspec.yml for AWS CodeBuild
+- Updating README with tech used
+- Updated README.md
+- Initial commit
