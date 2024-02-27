@@ -1,3 +1,6 @@
+# Environment
+scripts/secret_env.sh
+
 # Logs
 logs
 *.log

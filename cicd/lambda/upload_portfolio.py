@@ -1,13 +1,17 @@
+import io
+import mimetypes
+import os
+import zipfile
+
 import boto3
 from botocore.client import Config
-import io
-import zipfile
-import mimetypes
+
+SNS_TOPIC_ARN = os.environ['SNS_TOPIC_ARN']
+
+sns = boto3.resource('sns')
+topic = sns.Topic(SNS_TOPIC_ARN)
 
 def lambda_handler(event, context):
-    sns = boto3.resource('sns')
-    topic = sns.Topic('arn:aws:sns:us-west-2:597986669661:deployPortfolioTopic')
-
     location = {
         "bucketName": 'portfoliobuild.ktptran.com',
         "objectKey": 'portfoliobuild.zip'
