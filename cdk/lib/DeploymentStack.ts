@@ -92,6 +92,7 @@ export class DeploymentStack extends cdk.Stack {
 		const artifactBucket = new cdk.aws_s3.Bucket(this, "ArtifactBucket", {
 			autoDeleteObjects: true,
 			removalPolicy: cdk.RemovalPolicy.DESTROY,
+			bucketName: `${environment}-${projectName}-${accountId}-${region}-artifact`,
 		});
 
 		const sourceStage = {
@@ -150,9 +151,9 @@ export class DeploymentStack extends cdk.Stack {
 			description: "Deployment Pipeline Arn",
 		});
 
-		new cdk.CfnOutput(this, "DeploymentTopicArn", {
-			value: deploymentTopic.topicArn,
-			description: "Deployment SNS Topic Arn",
-		});
+		// new cdk.CfnOutput(this, "DeploymentTopicArn", {
+		// 	value: deploymentTopic.topicArn,
+		// 	description: "Deployment SNS Topic Arn",
+		// });
 	}
 }
