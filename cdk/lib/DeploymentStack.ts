@@ -30,15 +30,15 @@ export class DeploymentStack extends cdk.Stack {
 		} = props;
 
 		// SNS topic
-		const deploymentTopic = new cdk.aws_sns.Topic(this, "DeploymentTopic", {
-			displayName: "Deployment notification topic",
-		});
+		// const deploymentTopic = new cdk.aws_sns.Topic(this, "DeploymentTopic", {
+		// 	displayName: "Deployment notification topic",
+		// });
 
-		new cdk.aws_sns.Subscription(this, "DeploymentEmailSubscription", {
-			topic: deploymentTopic,
-			protocol: cdk.aws_sns.SubscriptionProtocol.EMAIL,
-			endpoint: email,
-		});
+		// new cdk.aws_sns.Subscription(this, "DeploymentEmailSubscription", {
+		// 	topic: deploymentTopic,
+		// 	protocol: cdk.aws_sns.SubscriptionProtocol.EMAIL,
+		// 	endpoint: email,
+		// });
 
 		// TODO: Add policies
 		// const lambdaRole = new cdk.aws_iam.Role(this, "lambdaRole", {
@@ -69,11 +69,12 @@ export class DeploymentStack extends cdk.Stack {
 			"Project",
 			{
 				buildSpec: cdk.aws_codebuild.BuildSpec.fromSourceFilename(
-					"../cicd/codebuild/buildspec.yaml"
+					"./cicd/codebuild/buildspec.yaml"
 				),
 			}
 		);
 
+		// TODO: Bug where the secre tvalue is not there
 		// Github secret for access to repository
 		new cdk.aws_secretsmanager.Secret(this, "Secret", {
 			secretName: "token",
@@ -87,6 +88,11 @@ export class DeploymentStack extends cdk.Stack {
 		// New pipeline artifacts
 		const sourceArtifact = new cdk.aws_codepipeline.Artifact("SourceArtifact");
 		const buildArtifact = new cdk.aws_codepipeline.Artifact("BuildArtifact");
+
+		const artifactBucket = new cdk.aws_s3.Bucket(this, "ArtifactBucket", {
+			autoDeleteObjects: true,
+			removalPolicy: cdk.RemovalPolicy.DESTROY,
+		});
 
 		const sourceStage = {
 			stageName: "Source",
@@ -133,6 +139,7 @@ export class DeploymentStack extends cdk.Stack {
 				pipelineName: `${environment}-${projectName}-pipeline`,
 				pipelineType: cdk.aws_codepipeline.PipelineType.V2,
 				crossAccountKeys: false,
+				artifactBucket,
 				stages: [sourceStage, buildStage, deployStage],
 			}
 		);
