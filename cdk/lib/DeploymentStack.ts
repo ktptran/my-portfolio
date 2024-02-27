@@ -75,9 +75,7 @@ export class DeploymentStack extends cdk.Stack {
 			}),
 		});
 
-		// Secret for secretsmanager
-		// https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_codepipeline_actions-readme.html#github
-		// TODO: Generate github token
+		// Github secret for access to repository
 		new cdk.aws_secretsmanager.Secret(this, "Secret", {
 			secretName: "token",
 			description: "Token to read from github repository",
