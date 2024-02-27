@@ -121,45 +121,6 @@ digraph "Diagram" {
           label = "\nDeploymentEmailSubscr",
           fontsize = 12,
         ];
-        "DeploymentStack/lambdaRole" [
-          label = " lambdaRole",
-          fontsize = 12,
-          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Security-Identity-Compliance/64/Arch_AWS-Identity-and-Access-Management_64@5x.png",
-          imagescale = "true",
-          imagepos = "tc",
-          penwidth = "0",
-          shape = "node",
-          fixedsize = "true",
-          labelloc = "b",
-          width = 1.2,
-          height = 1.466,
-        ];
-        "DeploymentStack/getImageHandler" [
-          label = " getImageHandler",
-          fontsize = 12,
-          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Compute/64/Arch_AWS-Lambda_64@5x.png",
-          imagescale = "true",
-          imagepos = "tc",
-          penwidth = "0",
-          shape = "node",
-          fixedsize = "true",
-          labelloc = "b",
-          width = 2,
-          height = 2.266,
-        ];
-        "DeploymentStack/codeBuildOutputBucket" [
-          label = "\ncodeBuildOutputBucket",
-          fontsize = 12,
-          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Storage/64/Arch_Amazon-S3-Standard_64@5x.png",
-          imagescale = "true",
-          imagepos = "tc",
-          penwidth = "0",
-          shape = "node",
-          fixedsize = "true",
-          labelloc = "b",
-          width = 2,
-          height = 2.4819999999999998,
-        ];
         "DeploymentStack/Project" [
           label = " Project",
           fontsize = 12,
@@ -186,6 +147,19 @@ digraph "Diagram" {
           width = 1.2,
           height = 1.466,
         ];
+        "DeploymentStack/DeploymentPipeline" [
+          label = " DeploymentPipeline",
+          fontsize = 12,
+          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Developer- Tools/64/Arch_AWS-CodePipeline_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
       }
     }
   }
@@ -201,10 +175,13 @@ digraph "Diagram" {
   "DeploymentStack/DeploymentEmailSubscription" -> "DeploymentStack/DeploymentTopic" [
     dir = "both",
   ];
-  "DeploymentStack/getImageHandler" -> "DeploymentStack/DeploymentTopic" [
+  "DeploymentStack/Project" -> "DeploymentStack/DeploymentPipeline" [
     dir = "both",
   ];
-  "DeploymentStack/getImageHandler" -> "DeploymentStack/lambdaRole" [
+  "DeploymentStack/DeploymentPipeline" -> "FrontendStack/SiteBucket" [
+    dir = "both",
+  ];
+  "DeploymentStack/DeploymentPipeline" -> "DeploymentStack/Project" [
     dir = "both",
   ];
 }

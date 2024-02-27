@@ -12,10 +12,16 @@ const envVariables = {
 };
 
 const app = new cdk.App();
-new FrontendStack(app, "FrontendStack", { ...envVariables });
+
+const frontendStack = new FrontendStack(app, "FrontendStack", {
+	...envVariables,
+});
+
 new DeploymentStack(app, "DeploymentStack", {
 	...envVariables,
+	siteBucket: frontendStack.siteBucket,
 	email: process.env["EMAIL"] ?? "",
 	owner: process.env["GITHUB_OWNER"] ?? "",
 	repo: process.env["GITHUB_REPO"] ?? "",
+	token: process.env["GITHUB_TOKEN"] ?? "",
 });

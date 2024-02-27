@@ -9,15 +9,14 @@ export interface FrontendStackProps extends cdk.StackProps {
 }
 
 export class FrontendStack extends cdk.Stack {
+	public siteBucket: cdk.aws_s3.Bucket;
+
 	constructor(scope: Construct, id: string, props: FrontendStackProps) {
 		super(scope, id, props);
 
 		const { projectName, environment, accountId, region } = props;
 
-		// The code that defines your stack goes here
-
-		// example resource
-		const siteBucket = new cdk.aws_s3.Bucket(this, "SiteBucket", {
+		this.siteBucket = new cdk.aws_s3.Bucket(this, "SiteBucket", {
 			bucketName: `${environment}-${projectName}-${accountId}-${region}-site`,
 			websiteIndexDocument: "index.html",
 			websiteErrorDocument: "index.html",
@@ -34,12 +33,12 @@ export class FrontendStack extends cdk.Stack {
 			}
 		);
 
-		siteBucket.addToResourcePolicy(
+		this.siteBucket.addToResourcePolicy(
 			new cdk.aws_iam.PolicyStatement({
 				sid: "s3BucketPublicRead",
 				effect: cdk.aws_iam.Effect.ALLOW,
 				actions: ["s3:GetObject"],
-				resources: [`${siteBucket.bucketArn}/*`],
+				resources: [`${this.siteBucket.bucketArn}/*`],
 				principals: [
 					new cdk.aws_iam.CanonicalUserPrincipal(
 						cloudfrontOAI.cloudFrontOriginAccessIdentityS3CanonicalUserId
@@ -55,7 +54,7 @@ export class FrontendStack extends cdk.Stack {
 				originConfigs: [
 					{
 						s3OriginSource: {
-							s3BucketSource: siteBucket,
+							s3BucketSource: this.siteBucket,
 							originAccessIdentity: cloudfrontOAI,
 						},
 						behaviors: [
@@ -73,7 +72,7 @@ export class FrontendStack extends cdk.Stack {
 
 		// CloudFormation Outputs
 		new cdk.CfnOutput(this, "SiteBucketName", {
-			value: siteBucket.bucketName,
+			value: this.siteBucket.bucketName,
 			description: "Web storage bucket name",
 		});
 

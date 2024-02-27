@@ -33,16 +33,19 @@ aws configure
 
 ### Deployment
 
-Generate the `secret_env.sh` using the following commands:
+1. Create a [GitHub Access Token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line), with scopes repo and admin:repo_hook.
+
+2. Generate the `secret_env.sh` using the following commands:
 
 ```bash
 EMAIL=test@example.com
 GITHUB_OWNER="example"
 GITHUB_REPO="my-portfolio"
-./scripts/generate_secret_env.sh $EMAIL $GITHUB_OWNER $GITHUB_REPO
+GITHUB_TOKEN="example"
+./scripts/generate_secret_env.sh $EMAIL $GITHUB_OWNER $GITHUB_REPO $GITHUB_TOKEN
 ```
 
-Then, run the following command to build and deploy the portfolio application:
+3. Run the following command to build and deploy the portfolio application:
 
 ```bash
 ./scripts/deploy.sh
