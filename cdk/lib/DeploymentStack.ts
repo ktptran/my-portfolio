@@ -64,16 +64,15 @@ export class DeploymentStack extends cdk.Stack {
 		// 	}
 		// );
 
-		const codeBuildProject = new cdk.aws_codebuild.Project(this, "Project", {
-			buildSpec: cdk.aws_codebuild.BuildSpec.fromObject({
-				version: "0.2",
-				phases: {
-					build: {
-						commands: ['echo "Hello, CodeBuild!"'],
-					},
-				},
-			}),
-		});
+		const codeBuildProject = new cdk.aws_codebuild.PipelineProject(
+			this,
+			"Project",
+			{
+				buildSpec: cdk.aws_codebuild.BuildSpec.fromSourceFilename(
+					"../cicd/codebuild/buildspec.yaml"
+				),
+			}
+		);
 
 		// Github secret for access to repository
 		new cdk.aws_secretsmanager.Secret(this, "Secret", {

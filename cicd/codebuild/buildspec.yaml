@@ -6,7 +6,4 @@ phases:
       - echo Nothing to do yet
 artifacts:
   files:
-    - home.html
-    - home.css
-    - script.js
-    - pic/*
+    - frontend/*
