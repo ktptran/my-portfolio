@@ -29,52 +29,16 @@ export class DeploymentStack extends cdk.Stack {
 			token,
 		} = props;
 
-		// SNS topic
-		// const deploymentTopic = new cdk.aws_sns.Topic(this, "DeploymentTopic", {
-		// 	displayName: "Deployment notification topic",
-		// });
-
-		// new cdk.aws_sns.Subscription(this, "DeploymentEmailSubscription", {
-		// 	topic: deploymentTopic,
-		// 	protocol: cdk.aws_sns.SubscriptionProtocol.EMAIL,
-		// 	endpoint: email,
-		// });
-
-		// TODO: Add policies
-		// const lambdaRole = new cdk.aws_iam.Role(this, "lambdaRole", {
-		// 	assumedBy: new cdk.aws_iam.ServicePrincipal("lambda.amazonaws.com"),
-		// 	managedPolicies: [
-		// 		cdk.aws_iam.ManagedPolicy.fromAwsManagedPolicyName(
-		// 			"service-role/AWSLambdaBasicExecutionRole"
-		// 		),
-		// 	],
-		// });
-
-		// const uploadPortfolioHandler = new cdk.aws_lambda.Function(
-		// 	this,
-		// 	"getImageHandler",
-		// 	{
-		// 		code: cdk.aws_lambda.Code.fromAsset("../cicd/lambda"),
-		// 		handler: "upload_portfolio.handler",
-		// 		runtime: cdk.aws_lambda.Runtime.PYTHON_3_12,
-		// 		environment: {
-		// 			SNS_TOPIC_ARN: deploymentTopic.topicArn,
-		// 		},
-		// 		role: lambdaRole,
-		// 	}
-		// );
-
 		const codeBuildProject = new cdk.aws_codebuild.PipelineProject(
 			this,
 			"Project",
 			{
 				buildSpec: cdk.aws_codebuild.BuildSpec.fromSourceFilename(
-					"./cicd/codebuild/buildspec.yaml"
+					"./cicd/buildspec.yaml"
 				),
 			}
 		);
 
-		// TODO: Bug where the secre tvalue is not there
 		// Github secret for access to repository
 		new cdk.aws_secretsmanager.Secret(this, "Secret", {
 			secretName: "token",
@@ -145,15 +109,55 @@ export class DeploymentStack extends cdk.Stack {
 			}
 		);
 
+		// Notifies email when deployment fails
+		const deploymentTopic = new cdk.aws_sns.Topic(this, "DeploymentTopic", {
+			displayName: "Deployment notification topic",
+		});
+
+		new cdk.aws_sns.Subscription(this, "DeploymentEmailSubscription", {
+			topic: deploymentTopic,
+			protocol: cdk.aws_sns.SubscriptionProtocol.EMAIL,
+			endpoint: email,
+		});
+
+		deploymentTopic.addToResourcePolicy(
+			new cdk.aws_iam.PolicyStatement({
+				sid: "AWSCodeStarNotifications_publish",
+				effect: cdk.aws_iam.Effect.ALLOW,
+				principals: [
+					new cdk.aws_iam.ServicePrincipal(
+						"codestar-notifications.amazonaws.com"
+					),
+				],
+				actions: ["SNS:Publish"],
+				resources: ["*"],
+			})
+		);
+
+		new cdk.aws_codestarnotifications.NotificationRule(
+			this,
+			"CodePipelineNotifications",
+			{
+				detailType: cdk.aws_codestarnotifications.DetailType.BASIC,
+				events: [
+					"codepipeline-pipeline-pipeline-execution-failed",
+					"codepipeline-pipeline-action-execution-failed",
+					"codepipeline-pipeline-stage-execution-failed",
+				],
+				source: deploymentPipeline,
+				targets: [deploymentTopic],
+			}
+		);
+
 		// CloudFormation outputs
 		new cdk.CfnOutput(this, "DeploymentPipelineArn", {
 			value: deploymentPipeline.pipelineArn,
 			description: "Deployment Pipeline Arn",
 		});
 
-		// new cdk.CfnOutput(this, "DeploymentTopicArn", {
-		// 	value: deploymentTopic.topicArn,
-		// 	description: "Deployment SNS Topic Arn",
-		// });
+		new cdk.CfnOutput(this, "DeploymentTopicArn", {
+			value: deploymentTopic.topicArn,
+			description: "Deployment SNS Topic Arn",
+		});
 	}
 }

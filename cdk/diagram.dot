@@ -104,23 +104,6 @@ digraph "Diagram" {
           style = "filled,rounded",
           fillcolor = "#e4e4e4",
         ];
-        "DeploymentStack/DeploymentTopic" [
-          label = " DeploymentTopic",
-          fontsize = 12,
-          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_AWS-Simple-Notification-Service_64@5x.png",
-          imagescale = "true",
-          imagepos = "tc",
-          penwidth = "0",
-          shape = "node",
-          fixedsize = "true",
-          labelloc = "b",
-          width = 2,
-          height = 2.266,
-        ];
-        "DeploymentStack/DeploymentEmailSubscription" [
-          label = "\nDeploymentEmailSubscr",
-          fontsize = 12,
-        ];
         "DeploymentStack/Project" [
           label = " Project",
           fontsize = 12,
@@ -147,6 +130,19 @@ digraph "Diagram" {
           width = 1.2,
           height = 1.466,
         ];
+        "DeploymentStack/ArtifactBucket" [
+          label = " ArtifactBucket",
+          fontsize = 12,
+          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Storage/64/Arch_Amazon-S3-Standard_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
         "DeploymentStack/DeploymentPipeline" [
           label = " DeploymentPipeline",
           fontsize = 12,
@@ -160,6 +156,27 @@ digraph "Diagram" {
           width = 1.2,
           height = 1.466,
         ];
+        "DeploymentStack/DeploymentTopic" [
+          label = " DeploymentTopic",
+          fontsize = 12,
+          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_AWS-Simple-Notification-Service_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 2,
+          height = 2.266,
+        ];
+        "DeploymentStack/DeploymentEmailSubscription" [
+          label = "\nDeploymentEmailSubscr",
+          fontsize = 12,
+        ];
+        "DeploymentStack/CodePipelineNotifications" [
+          label = "\nCodePipelineNotificat",
+          fontsize = 12,
+        ];
       }
     }
   }
@@ -172,16 +189,25 @@ digraph "Diagram" {
   "FrontendStack/SiteDistribution/CFDistribution" -> "FrontendStack/CloudFrontOAI" [
     dir = "both",
   ];
-  "DeploymentStack/DeploymentEmailSubscription" -> "DeploymentStack/DeploymentTopic" [
+  "DeploymentStack/Project" -> "DeploymentStack/ArtifactBucket" [
     dir = "both",
   ];
-  "DeploymentStack/Project" -> "DeploymentStack/DeploymentPipeline" [
+  "DeploymentStack/DeploymentPipeline" -> "DeploymentStack/ArtifactBucket" [
     dir = "both",
   ];
   "DeploymentStack/DeploymentPipeline" -> "FrontendStack/SiteBucket" [
     dir = "both",
   ];
   "DeploymentStack/DeploymentPipeline" -> "DeploymentStack/Project" [
+    dir = "both",
+  ];
+  "DeploymentStack/DeploymentEmailSubscription" -> "DeploymentStack/DeploymentTopic" [
+    dir = "both",
+  ];
+  "DeploymentStack/CodePipelineNotifications" -> "DeploymentStack/DeploymentPipeline" [
+    dir = "both",
+  ];
+  "DeploymentStack/CodePipelineNotifications" -> "DeploymentStack/DeploymentTopic" [
     dir = "both",
   ];
 }

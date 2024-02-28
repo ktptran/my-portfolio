@@ -13,7 +13,7 @@ This project provides a CI/CD pipeline for deploying a static website using Amaz
 
 ### Key Performance Indicators
 
-1. Deploy the updated version of the website within minutes.
+1. Deploy the updated version of the website within minutes automatically.
 
 ## Launch Configurations
 
@@ -42,7 +42,8 @@ EMAIL=test@example.com
 GITHUB_OWNER="example"
 GITHUB_REPO="my-portfolio"
 GITHUB_TOKEN="example"
-./scripts/generate_secret_env.sh $EMAIL $GITHUB_OWNER $GITHUB_REPO $GITHUB_TOKEN
+DOMAIN_NAME="example.xyz"
+./scripts/generate_secret_env.sh $EMAIL $GITHUB_OWNER $GITHUB_REPO $GITHUB_TOKEN $DOMAIN_NAME
 ```
 
 3. Run the following command to build and deploy the portfolio application:
@@ -55,36 +56,21 @@ GITHUB_TOKEN="example"
 
 ## Architecture Overview
 
+Upon pushing to the Github master branch, the AWS CodePipeline pulls the latest changes. These changes are processed through AWS CodeBuild and deployed to Amazon S3 which is delivered through Amazon CloudFront. The Amazon CloudFront is built in with a domain name configured through Route 53 with an associated SSL/TLS certificate through AWS Certificate Manager. If the pipeline fails at any point, the developer is notified of the errors through Amazon SNS.
+
+![Architecture Diagram](docs/assets/architecture-diagram.png)
+
 ### Code Layout
 
 | Path         | Description                                                    |
 | :----------- | :------------------------------------------------------------- |
 | cdk/         | AWS CDK source code                                            |
-| cicd/        | Lambda and CodeBuild processing code                           |
+| cicd/        | CodeBuild buildspec code                                       |
 | docs/assets/ | supporting assets for documentation.                           |
 | frontend/    | source code for React frontend                                 |
 | scripts/     | shell scripts to build, deploy, and interact with the project. |
 
-### Architecture Diagram
+## Future State
 
-**Frontend**
-
-This website is hosted using Amazon Web Services.
-
-1. Amazon Route 53 for DNS routing
-2. Amazon CloudFront for content distribution and caching
-3. AWS Certificate Manager for TLS/SSL security
-4. Amazon S3 to host static websites
-
-![Frontend Diagram](docs/assets/Frontend.png)
-
-**CI/CD**
-
-Behind the scenes we are using the following services to automate deployment whenever updates are pushed to the master branch:
-
-1. CodePipeline is notified of the changes in Github.
-2. CodeBuild is notified by CodePipeline and zips the files together into an S3 bucket.
-3. Lambda takes the S3 zip file and unzips it in the static hosted S3 bucket.
-   After this is processed, lambda uses SNS to notify me about the deployment success.
-
-![Backend Diagram](docs/assets/Backend.png)
+1. Refactor website to NextJS and update with projects.
+2. Add in ktptran.xyz domain name to hosted zone and deployment.
