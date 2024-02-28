@@ -54,6 +54,12 @@ DOMAIN_NAME="example.xyz"
 
 ### Teardown
 
+Run the following command to teardown the portfolio application:
+
+```bash
+./scripts/teardown.sh
+```
+
 ## Architecture Overview
 
 Upon pushing to the Github master branch, the AWS CodePipeline pulls the latest changes. These changes are processed through AWS CodeBuild and deployed to Amazon S3 which is delivered through Amazon CloudFront. The Amazon CloudFront is built in with a domain name configured through Route 53 with an associated SSL/TLS certificate through AWS Certificate Manager. If the pipeline fails at any point, the developer is notified of the errors through Amazon SNS.
@@ -74,3 +80,7 @@ Upon pushing to the Github master branch, the AWS CodePipeline pulls the latest 
 
 1. Refactor website to NextJS and update with projects.
 2. Add in ktptran.xyz domain name to hosted zone and deployment.
+
+### Design Decisions
+
+This portfolio is a static website which is best suited for sever-side rendering. Between ReactJS and NextJS, NextJS offers server-side rendering. NextJS is a framework used to build UI and pages for the web app within the React Library.
