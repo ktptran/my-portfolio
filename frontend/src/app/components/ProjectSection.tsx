@@ -24,14 +24,6 @@ const projectsData = [
 	},
 	{
 		id: 3,
-		title: "LLM Running Application",
-		description: "LLM Running Application",
-		image: "/images/projects/3.png",
-		tag: ["All", "AWS", "LangChain", "NextJS", "Tailwind"],
-		gitUrl: "https://github.com/ktptran/llm-running-app",
-	},
-	{
-		id: 4,
 		title: "Mental Health Appointment Scheduling",
 		description: "Study of optimal reservation method for medical clinic.",
 		image: "/images/projects/appointment-scheduling.png",
@@ -39,6 +31,14 @@ const projectsData = [
 		gitUrl: "https://github.com/warandstar/math381hallhealth",
 		previewUrl:
 			"https://drive.google.com/open?id=1dXusDXDo6_l6Kpr9pTMdekr-tlyrh6nu",
+	},
+	{
+		id: 4,
+		title: "Youth Group Website",
+		description: "Platform to centralize communication and marketing",
+		image: "/images/projects/youth-group.png",
+		tag: ["All", "ReactJS", "AWS"],
+		previewUrl: "https://www.chuathanhthan.org/",
 	},
 ];
 
@@ -92,14 +92,16 @@ const ProjectCard = ({
 				}}
 			>
 				<div className="overlay flex items-center justify-center absolute top-0 left-0 w-full h-full bg-[#181818] bg-opacity-0 hidden group-hover:flex group-hover:bg-opacity-80 transition-all duration-500">
-					<a
-						href={gitUrl}
-						target="_blank"
-						rel="noopener noreferrer"
-						className="h-14 w-14 mr-2 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
-					>
-						<CodeBracketIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
-					</a>
+					{gitUrl && (
+						<a
+							href={gitUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="h-14 w-14 mr-2 border-2 relative rounded-full border-[#ADB7BE] hover:border-white group/link"
+						>
+							<CodeBracketIcon className="h-10 w-10 text-[#ADB7BE] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group-hover/link:text-white" />
+						</a>
+					)}
 					{previewUrl && (
 						<a
 							href={previewUrl}
@@ -116,14 +118,20 @@ const ProjectCard = ({
 				<h5 className="text-xl font-semibold mb-2">{title}</h5>
 				<p className="text-[#ADB7BE]">{description}</p>
 				<div className="flex gap-2 pt-4">
-					{tag.map((value: any, index: any) => {
-						if (value !== "All")
-							return (
-								<Chip color="secondary" key={index}>
-									{value}
-								</Chip>
-							);
-					})}
+					{tag
+						.sort(function (a: string, b: string) {
+							if (a.toLowerCase() < b.toLowerCase()) return -1;
+							if (a.toLowerCase() > b.toLowerCase()) return 1;
+							return 0;
+						})
+						.map((value: any, index: any) => {
+							if (value !== "All")
+								return (
+									<Chip color="secondary" key={index}>
+										{value}
+									</Chip>
+								);
+						})}
 				</div>
 			</div>
 		</div>
