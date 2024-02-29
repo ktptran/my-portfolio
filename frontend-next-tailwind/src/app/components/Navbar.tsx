@@ -1,7 +1,9 @@
 "use client";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import SiteIcon from "../../../public/images/logo.png";
 import NavLink from "./NavLink";
 
 import { Key } from "react";
@@ -9,15 +11,15 @@ import { Key } from "react";
 const navLinks = [
 	{
 		title: "About",
-		path: "#about",
+		path: "about",
 	},
 	{
 		title: "Projects",
-		path: "#projects",
+		path: "projects",
 	},
 	{
 		title: "Contact",
-		path: "#contact",
+		path: "contact",
 	},
 ];
 
@@ -43,7 +45,7 @@ const Navbar = () => {
 					href={"/"}
 					className="text-xl md:text-5xl text-white font-semibold"
 				>
-					Logo
+					<Image src={SiteIcon} alt="Site Logo" className="w-10 h-10" />
 				</Link>
 				<div className="mobile-menu block md:hidden">
 					{navbarOpen ? (
