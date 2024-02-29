@@ -58,6 +58,7 @@ const TAB_DATA = [
 				<li>
 					<a
 						className="underline"
+						target="_blank"
 						rel="noopener noreferrer"
 						href="https://www.credly.com/badges/a1b4a848-8391-477a-8705-8c341a52bf4d"
 					>
@@ -76,6 +77,7 @@ const TAB_DATA = [
 				<li>
 					<a
 						className="underline"
+						target="_blank"
 						rel="noopener noreferrer"
 						href="https://www.credly.com/badges/fa538213-b665-4635-945d-6c5648895305"
 					>
@@ -85,6 +87,7 @@ const TAB_DATA = [
 				<li>
 					<a
 						className="underline"
+						target="_blank"
 						rel="noopener noreferrer"
 						href="https://www.credly.com/badges/6a1765c4-c906-4d1f-b625-72b1e78b9c35"
 					>
@@ -94,6 +97,7 @@ const TAB_DATA = [
 				<li>
 					<a
 						className="underline"
+						target="_blank"
 						rel="noopener noreferrer"
 						href="https://www.credly.com/badges/e2681ad2-0dd4-41ff-bae5-d776cedbdc18"
 					>
@@ -103,6 +107,7 @@ const TAB_DATA = [
 				<li>
 					<a
 						className="underline"
+						target="_blank"
 						rel="noopener noreferrer"
 						href="https://www.credly.com/badges/9847fc66-d698-4ed4-a375-5ee3a48ae82c"
 					>
@@ -112,6 +117,7 @@ const TAB_DATA = [
 				<li>
 					<a
 						className="underline"
+						target="_blank"
 						rel="noopener noreferrer"
 						href="https://www.credly.com/badges/1e5116bc-3ef4-475c-9a1f-714f0125df0a"
 					>
@@ -138,19 +144,18 @@ const AboutSection = () => {
 				<Image
 					src="/images/about-image.png"
 					alt="about-image"
-					width={500}
-					height={500}
+					width={550}
+					height={550}
 				/>
 				<div className="mt-4 md:mt-0 text-left flex flex-col h-full">
 					<h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
 					<p className="text-base md:text-lg">
 						I am a Solutions Architect with a passion for aiding customers
-						develop industry-leading solutions. I have experience working with
-						both early-stage startups and fortune 500 companies. Some of my
-						favorite projects include geospatial supply chain management, AI/ML
-						inventory detection, and heterogeneous data unification, In my free
-						time, I enjoy reading, running, and writing. I am excited to build
-						new solutions to create history!
+						develop industry-leading solutions. Previously, I supported both
+						early-stage startups and fortune 500 companies with different
+						initiatives such as geospatial supply chain management, AI/ML
+						inventory detection, and heterogeneous data unification. In my free
+						time, I enjoy reading, running, and writing.
 					</p>
 					<div className="flex flex-row justify-start mt-8">
 						<TabButton

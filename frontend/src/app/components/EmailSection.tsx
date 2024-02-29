@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import GithubIcon from "../../../public/svg/github-icon.svg";
 import HuggingFaceIcon from "../../../public/svg/hf-icon.svg";
@@ -48,23 +47,35 @@ function EmailSection() {
 					try my best to get back to you!{" "}
 				</p>
 				<div className="socials flex flex-row gap-2">
-					<Link href="https://github.com/ktptran">
+					<a
+						target="_blank"
+						href="https://github.com/ktptran"
+						rel="noopener noreferrer"
+					>
 						<Image src={GithubIcon} alt="Github Icon" className="w-10 h-10" />
-					</Link>
-					<Link href="https://www.linkedin.com/in/ktptran/">
+					</a>
+					<a
+						target="_blank"
+						href="https://linkedin.com/in/ktptran"
+						rel="noopener noreferrer"
+					>
 						<Image
 							src={LinkedInIcon}
 							alt="LinkedIn Icon"
 							className="w-10 h-10"
 						/>
-					</Link>
-					<Link href="https://huggingface.co/ktptran">
+					</a>
+					<a
+						target="_blank"
+						href="https://huggingface.co/ktptran"
+						rel="noopener noreferrer"
+					>
 						<Image
 							src={HuggingFaceIcon}
 							alt="Hugging Face Icon"
 							className="w-10 h-10"
 						/>
-					</Link>
+					</a>
 				</div>
 			</div>
 			<div>
