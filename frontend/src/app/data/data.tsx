@@ -130,6 +130,14 @@ const projectsData = [
 		tag: ["All", "ReactJS", "AWS"],
 		previewUrl: "https://www.chuathanhthan.org/",
 	},
+	{
+		id: 5,
+		title: "League of Legends @ UW",
+		description: "Workshops & tooling for club operations.",
+		image: "/images/projects/lol-uw.png",
+		tag: ["All", "Discord", "Python", "Data Science"],
+		gitUrl: "https://github.com/ktptran/pcm_functions",
+	},
 ];
 
 const achievementData = [
