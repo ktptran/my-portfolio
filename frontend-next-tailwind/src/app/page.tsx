@@ -1,3 +1,5 @@
+"use client";
+import { NextUIProvider } from "@nextui-org/react";
 import AboutSection from "./components/AboutSection";
 import AchievementsSection from "./components/AchievementsSection";
 import EmailSection from "./components/EmailSection";
@@ -8,16 +10,18 @@ import ProjectsSection from "./components/ProjectSection";
 
 export default function Home() {
 	return (
-		<main className="flex min-h-screen flex-col bg-[#121212]">
-			<Navbar />
-			<div className="container mt-24 mx-auto px-12 py-4">
-				<HeroSection />
-				<AchievementsSection />
-				<AboutSection />
-				<ProjectsSection />
-				<EmailSection />
-			</div>
-			<Footer />
-		</main>
+		<NextUIProvider>
+			<main className="flex min-h-screen flex-col bg-[#121212]">
+				<Navbar />
+				<div className="container mt-24 mx-auto px-12 py-4">
+					<HeroSection />
+					<AchievementsSection />
+					<AboutSection />
+					<ProjectsSection />
+					<EmailSection />
+				</div>
+				<Footer />
+			</main>
+		</NextUIProvider>
 	);
 }

@@ -22,7 +22,6 @@ const onBtnClick = (e: {
 
 const NavLink = ({ href, title }: { href: any; title: any }) => (
 	<button
-		// href={href}
 		goto={href}
 		className="block py-2 pl-3 pr-4 text-[#ADB7BE] sm:text-xl rounded md:p-0 hover:text-white"
 		onClick={(e) => onBtnClick(e)}
