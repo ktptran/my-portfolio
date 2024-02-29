@@ -2,8 +2,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import GithubIcon from "../../../public/github-icon.svg";
-import LinkedInIcon from "../../../public/linkedin-icon.svg";
+import GithubIcon from "../../../public/svg/github-icon.svg";
+import HuggingFaceIcon from "../../../public/svg/hf-icon.svg";
+import LinkedInIcon from "../../../public/svg/linkedin-icon.svg";
 
 function EmailSection() {
 	const [emailSubmitted, setEmailSubmitted] = useState(false);
@@ -47,11 +48,22 @@ function EmailSection() {
 					try my best to get back to you!{" "}
 				</p>
 				<div className="socials flex flex-row gap-2">
-					<Link href="github.com">
-						<Image src={GithubIcon} alt="Github Icon" />
+					<Link href="https://github.com/ktptran">
+						<Image src={GithubIcon} alt="Github Icon" className="w-10 h-10" />
 					</Link>
-					<Link href="linkedin.com">
-						<Image src={LinkedInIcon} alt="LinkedIn Icon" />
+					<Link href="https://www.linkedin.com/in/ktptran/">
+						<Image
+							src={LinkedInIcon}
+							alt="LinkedIn Icon"
+							className="w-10 h-10"
+						/>
+					</Link>
+					<Link href="https://huggingface.co/ktptran">
+						<Image
+							src={HuggingFaceIcon}
+							alt="Hugging Face Icon"
+							className="w-10 h-10"
+						/>
 					</Link>
 				</div>
 			</div>

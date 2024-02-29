@@ -39,12 +39,14 @@ const TAB_DATA = [
 		id: "skills",
 		content: (
 			<ul className="list-disc pl-2">
+				<li>ReactJS</li>
+				<li>NextJS</li>
 				<li>Node.js</li>
-				<li>Express</li>
-				<li>PostgreSQL</li>
-				<li>Sequelize</li>
+				<li>Tailwind</li>
 				<li>Javascript</li>
-				<li>React</li>
+				<li>Golang</li>
+				<li>AWS Cloud Development Kit (CDK)</li>
+				<li>AWS Serverless Application Model (SAM)</li>
 			</ul>
 		),
 	},
@@ -53,8 +55,8 @@ const TAB_DATA = [
 		id: "education",
 		content: (
 			<ul className="list-disc pl-2">
-				<li>Fullstack Academy of Code</li>
-				<li>University of California Santa Cruz</li>
+				<li>AWS TechU</li>
+				<li>BS Applied Math from University of Washington, Seattle</li>
 			</ul>
 		),
 	},
@@ -63,8 +65,11 @@ const TAB_DATA = [
 		id: "certifications",
 		content: (
 			<ul className="list-disc pl-2">
-				<li>AWS Cloud Practitioner</li>
-				<li>Google Professional Cloud Developer</li>
+				<li>AWS Solutions Architect - Professional</li>
+				<li>AWS Data Analytics - Specialty</li>
+				<li>AWS Machine Learning - Specialty</li>
+				<li>AWS Developer - Associate</li>
+				<li>AWS SysOps - Associate</li>
 			</ul>
 		),
 	},
@@ -91,12 +96,13 @@ const AboutSection = () => {
 				<div className="mt-4 md:mt-0 text-left flex flex-col h-full">
 					<h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
 					<p className="text-base md:text-lg">
-						I am a full stack web developer with a passion for creating
-						interactive and responsive web applications. I have experience
-						working with JavaScript, React, Redux, Node.js, Express, PostgreSQL,
-						Sequelize, HTML, CSS, and Git. I am a quick learner and I am always
-						looking to expand my knowledge and skill set. I am a team player and
-						I am excited to work with others to create amazing applications.
+						I am a Solutions Architect with a passion for aiding customers
+						develop industry-leading solutions. I have experience working with
+						both early-stage startups and fortune 500 companies. Some of my
+						favorite projects include geospatial supply chain management, AI/ML
+						inventory detection, and heterogeneous data unification, In my free
+						time, I enjoy reading, running, and writing. I am excited to build
+						new solutions to create history!
 					</p>
 					<div className="flex flex-row justify-start mt-8">
 						<TabButton
