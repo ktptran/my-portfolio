@@ -99,14 +99,14 @@ const projectsData = [
 		id: 1,
 		title: "NextJS Portfolio Website",
 		description: "Showcasing expert work.",
-		image: "/images/projects/1.png",
+		image: "/images/projects/portfolio.png",
 		tag: ["All", "AWS", "NextJS", "Tailwind"],
 		gitUrl: "https://github.com/ktptran/my-portfolio",
 		previewUrl: "https://ktptran.xyz",
 	},
 	{
 		id: 2,
-		title: "AI/ML Inventory Detection",
+		title: "AI/ML Automated Inventory Detection",
 		description: "Recording fruit inventory storage.",
 		image: "/images/projects/inventory.png",
 		tag: ["All", "AWS", "ReactJS", "AI/ML"],
@@ -114,8 +114,9 @@ const projectsData = [
 	},
 	{
 		id: 3,
-		title: "Mental Health Appointment Scheduling",
-		description: "Study of optimal reservation method.",
+		title: "Probability Appointment Scheduling",
+		description:
+			"Study for optimal reservation system for mental health clinic.",
 		image: "/images/projects/appointment-scheduling.png",
 		tag: ["All", "Python", "Probability"],
 		gitUrl: "https://github.com/warandstar/math381hallhealth",
@@ -124,7 +125,7 @@ const projectsData = [
 	},
 	{
 		id: 4,
-		title: "Youth Group Website",
+		title: "Youth Group ReactJS Website",
 		description: "Platform to centralize communication and marketing",
 		image: "/images/projects/youth-group.png",
 		tag: ["All", "ReactJS", "AWS"],
