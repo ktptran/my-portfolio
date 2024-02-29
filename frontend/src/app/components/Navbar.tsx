@@ -7,21 +7,7 @@ import SiteIcon from "../../../public/images/logo.png";
 import NavLink from "./NavLink";
 
 import { Key } from "react";
-
-const navLinks = [
-	{
-		title: "About",
-		path: "about",
-	},
-	{
-		title: "Projects",
-		path: "projects",
-	},
-	{
-		title: "Contact",
-		path: "contact",
-	},
-];
+import { navLinks } from "../data/data";
 
 const MenuOverlay = ({ links }: { links: any }) => {
 	return (

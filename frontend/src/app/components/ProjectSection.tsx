@@ -3,44 +3,7 @@ import { CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
 import { Chip } from "@nextui-org/react";
 import { motion, useInView } from "framer-motion";
 import React, { useRef, useState } from "react";
-
-const projectsData = [
-	{
-		id: 1,
-		title: "NextJS Portfolio Website",
-		description: "Showcasing expert work.",
-		image: "/images/projects/1.png",
-		tag: ["All", "AWS", "NextJS", "Tailwind"],
-		gitUrl: "https://github.com/ktptran/my-portfolio",
-		previewUrl: "https://ktptran.xyz",
-	},
-	{
-		id: 2,
-		title: "AI/ML Inventory Detection",
-		description: "Recording fruit inventory storage.",
-		image: "/images/projects/inventory.png",
-		tag: ["All", "AWS", "ReactJS", "AI/ML"],
-		gitUrl: "https://github.com/ktptran/inventory-detection",
-	},
-	{
-		id: 3,
-		title: "Mental Health Appointment Scheduling",
-		description: "Study of optimal reservation method for medical clinic.",
-		image: "/images/projects/appointment-scheduling.png",
-		tag: ["All", "Python", "Probability"],
-		gitUrl: "https://github.com/warandstar/math381hallhealth",
-		previewUrl:
-			"https://drive.google.com/open?id=1dXusDXDo6_l6Kpr9pTMdekr-tlyrh6nu",
-	},
-	{
-		id: 4,
-		title: "Youth Group Website",
-		description: "Platform to centralize communication and marketing",
-		image: "/images/projects/youth-group.png",
-		tag: ["All", "ReactJS", "AWS"],
-		previewUrl: "https://www.chuathanhthan.org/",
-	},
-];
+import { projectsData } from "../data/data";
 
 const ProjectTag = ({
 	name,
@@ -138,11 +101,6 @@ const ProjectCard = ({
 	);
 };
 
-const cardVariants = {
-	initial: { y: 50, opacity: 0 },
-	animate: { y: 0, opacity: 1 },
-};
-
 const ProjectsSection = () => {
 	const [tag, setTag] = useState("All");
 	const ref = useRef(null);
@@ -182,7 +140,10 @@ const ProjectsSection = () => {
 				{filteredProjects.map((project, index) => (
 					<motion.li
 						key={index}
-						variants={cardVariants}
+						variants={{
+							initial: { y: 50, opacity: 0 },
+							animate: { y: 0, opacity: 1 },
+						}}
 						initial="initial"
 						animate={isInView ? "animate" : "initial"}
 						transition={{ duration: 0.3, delay: index * 0.4 }}

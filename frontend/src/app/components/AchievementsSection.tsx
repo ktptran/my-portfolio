@@ -1,5 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
+import { achievementData } from "../data/data";
 
 const AnimatedNumbers = dynamic(
 	() => {
@@ -8,34 +9,11 @@ const AnimatedNumbers = dynamic(
 	{ ssr: false }
 );
 
-const achievementList = [
-	{
-		metric: "Projects",
-		value: "20",
-		postfix: "+",
-	},
-	{
-		prefix: "$",
-		metric: "ARR Generated",
-		value: "4.1",
-		postfix: "M+",
-	},
-	{
-		metric: "Avg CSAT",
-		value: "100",
-		postfix: "%",
-	},
-	{
-		metric: "years",
-		value: "4",
-	},
-];
-
 function AchievementsSection() {
 	return (
 		<div className="py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
 			<div className="border-[#33353F] border rounded-md py-8 px-16 flex flex-row items-center justify-between">
-				{achievementList.map((achievement, index) => (
+				{achievementData.map((achievement, index) => (
 					<div
 						key={index}
 						className="flex flex-col items-center justify-center mx-4"
