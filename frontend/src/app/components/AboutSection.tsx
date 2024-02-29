@@ -55,8 +55,16 @@ const TAB_DATA = [
 		id: "education",
 		content: (
 			<ul className="list-disc pl-2">
-				<li>AWS TechU</li>
-				<li>BS Applied Math from University of Washington, Seattle</li>
+				<li>
+					<a
+						className="underline"
+						rel="noopener noreferrer"
+						href="https://www.credly.com/badges/a1b4a848-8391-477a-8705-8c341a52bf4d"
+					>
+						AWS TechU
+					</a>
+				</li>
+				<li>BS Applied Math @ University of Washington, Seattle</li>
 			</ul>
 		),
 	},
@@ -65,11 +73,51 @@ const TAB_DATA = [
 		id: "certifications",
 		content: (
 			<ul className="list-disc pl-2">
-				<li>AWS Solutions Architect - Professional</li>
-				<li>AWS Data Analytics - Specialty</li>
-				<li>AWS Machine Learning - Specialty</li>
-				<li>AWS Developer - Associate</li>
-				<li>AWS SysOps - Associate</li>
+				<li>
+					<a
+						className="underline"
+						rel="noopener noreferrer"
+						href="https://www.credly.com/badges/fa538213-b665-4635-945d-6c5648895305"
+					>
+						AWS Solutions Architect - Professional
+					</a>
+				</li>
+				<li>
+					<a
+						className="underline"
+						rel="noopener noreferrer"
+						href="https://www.credly.com/badges/6a1765c4-c906-4d1f-b625-72b1e78b9c35"
+					>
+						AWS Data Analytics - Specialty
+					</a>
+				</li>
+				<li>
+					<a
+						className="underline"
+						rel="noopener noreferrer"
+						href="https://www.credly.com/badges/e2681ad2-0dd4-41ff-bae5-d776cedbdc18"
+					>
+						AWS Machine Learning - Specialty
+					</a>
+				</li>
+				<li>
+					<a
+						className="underline"
+						rel="noopener noreferrer"
+						href="https://www.credly.com/badges/9847fc66-d698-4ed4-a375-5ee3a48ae82c"
+					>
+						AWS Developer - Associate
+					</a>
+				</li>
+				<li>
+					<a
+						className="underline"
+						rel="noopener noreferrer"
+						href="https://www.credly.com/badges/1e5116bc-3ef4-475c-9a1f-714f0125df0a"
+					>
+						AWS SysOps Administrator - Associate
+					</a>
+				</li>
 			</ul>
 		),
 	},

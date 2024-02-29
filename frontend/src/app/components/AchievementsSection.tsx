@@ -21,8 +21,9 @@ const achievementList = [
 		postfix: "M+",
 	},
 	{
-		metric: "Certifications",
-		value: "11",
+		metric: "Avg CSAT",
+		value: "100",
+		postfix: "%",
 	},
 	{
 		metric: "years",
