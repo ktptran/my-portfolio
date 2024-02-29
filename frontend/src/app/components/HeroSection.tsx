@@ -39,6 +39,7 @@ const HeroSection = () => {
 					<div>
 						<button className="px-6 py-3 sm:w-fit rounded-full mr-4 bg-gradient-to-br from-blue-500 via-primary-500 to-secondary-500 hover:bg-slate-200 text-white">
 							<a
+								target="_blank"
 								rel="noopener noreferrer"
 								href="https://www.upwork.com/freelancers/~019aaf5668e1a71ef6?mp_source=share"
 							>
@@ -47,6 +48,7 @@ const HeroSection = () => {
 						</button>
 						<button className="px-1 py-1 sm:w-fit rounded-full bg-transparent bg-gradient-to-br from-blue-500 via-primary-500 to-secondary-500 hover:bg-slate-800 text-white mt-3">
 							<a
+								target="_blank"
 								rel="noopener noreferrer"
 								href="https://drive.google.com/file/d/1XzgJx714Ii6ws-FiInxLLtdmxDXMWtTX/view?usp=drive_link"
 							>

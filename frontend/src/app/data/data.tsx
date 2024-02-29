@@ -115,7 +115,7 @@ const projectsData = [
 	{
 		id: 3,
 		title: "Mental Health Appointment Scheduling",
-		description: "Study of optimal reservation method for medical clinic.",
+		description: "Study of optimal reservation method.",
 		image: "/images/projects/appointment-scheduling.png",
 		tag: ["All", "Python", "Probability"],
 		gitUrl: "https://github.com/warandstar/math381hallhealth",
