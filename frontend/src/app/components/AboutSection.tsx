@@ -45,7 +45,7 @@ const AboutSection = () => {
 		<section className="text-white" id="about">
 			<div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py16 xl:px-16">
 				<Image
-					src="/images/about-image.png"
+					src="/images/about-image.jpeg"
 					alt="about-image"
 					width={550}
 					height={550}
@@ -60,7 +60,7 @@ const AboutSection = () => {
 						inventory detection, and heterogeneous data unification. In my free
 						time, I enjoy reading, running, and writing.
 					</p>
-					<div className="flex flex-row justify-start mt-8">
+					<div className="flex flex-row justify-start mt-4">
 						<TabButton
 							selectTab={() => handleTabChange("skills")}
 							active={tab === "skills"}
@@ -80,7 +80,7 @@ const AboutSection = () => {
 							Certifications
 						</TabButton>
 					</div>
-					<div className="mt-8">
+					<div className="mt-4">
 						{aboutTabData.find((t) => t.id === tab).content}
 					</div>
 				</div>

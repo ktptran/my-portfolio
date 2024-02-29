@@ -132,8 +132,8 @@ const projectsData = [
 	},
 	{
 		id: 5,
-		title: "League of Legends @ UW",
-		description: "Workshops & tooling for club operations.",
+		title: "League of Legends @ UW Operations",
+		description: "Workshops & tooling to grow club systems.",
 		image: "/images/projects/lol-uw.png",
 		tag: ["All", "Discord", "Python", "Data Science"],
 		gitUrl: "https://github.com/ktptran/pcm_functions",

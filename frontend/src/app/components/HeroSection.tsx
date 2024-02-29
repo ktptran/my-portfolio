@@ -6,7 +6,7 @@ import { TypeAnimation } from "react-type-animation";
 
 const HeroSection = () => {
 	return (
-		<section className="lg:py-16">
+		<section className="lg:py-16  py-8 px-4 xl:gap-16 sm:py16 xl:px-16">
 			<div className="grid grid-cols-1 sm:grid-cols-12">
 				<motion.div
 					initial={{ opacity: 0, scale: 0.5 }}
@@ -65,13 +65,13 @@ const HeroSection = () => {
 					transition={{ duration: 0.5 }}
 					className="col-span-4 place-self-center mt-4 lg:mt-0"
 				>
-					<div className="rounded-full bg-[#181818] w-[350px] h-[350px] lg:w-[400px] lg:h-400px relative">
+					<div className="rounded-full bg-[#212121] w-[350px] h-[350px] lg:w-[375px] lg:h-375px relative">
 						<Image
 							src="/images/kevin-tran.png"
 							alt="hero image"
 							className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-							width={300}
-							height={300}
+							width={280}
+							height={280}
 						/>
 					</div>
 				</motion.div>

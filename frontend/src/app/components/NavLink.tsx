@@ -1,9 +1,28 @@
 // A scroller function that takes element id and smooth scrolls to it.
+const getOffset = (elID: string) => {
+	let vw = Math.max(
+		document.documentElement.clientWidth || 0,
+		window.innerWidth || 0
+	);
+	if (vw > 500) {
+		return 100;
+	} else {
+		if (elID === "about") {
+			return 200;
+		} else if (elID === "projects") {
+			return 220;
+		} else {
+			return 125;
+		}
+	}
+};
+
 const scroll2El = (elID: string) => {
+	const offset = getOffset(elID);
 	const docElId = document.getElementById(elID);
 	if (docElId) {
 		window.scrollTo({
-			top: docElId.offsetTop - 100,
+			top: docElId.offsetTop - offset,
 			behavior: "smooth",
 		});
 	}

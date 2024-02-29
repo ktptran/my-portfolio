@@ -50,7 +50,7 @@ const ProjectCard = ({
 					background: `url(${imgUrl})`,
 					backgroundSize: "auto 100%",
 					backgroundRepeat: "no-repeat",
-					backgroundPosition: "left top",
+					backgroundPosition: "center top",
 					backgroundColor: "white",
 				}}
 			>
