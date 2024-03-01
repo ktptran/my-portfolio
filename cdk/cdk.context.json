@@ -1,1 +1,6 @@
-{}
+{
+  "hosted-zone:account=597986669661:domainName=ktptran.xyz:region=us-east-1": {
+    "Id": "/hostedzone/Z05876452WYBTFV9UJ4K3",
+    "Name": "ktptran.xyz."
+  }
+}

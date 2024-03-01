@@ -1,5 +1,4 @@
 import * as cdk from "aws-cdk-lib";
-import { BucketAccessControl } from "aws-cdk-lib/aws-s3";
 import { Construct } from "constructs";
 
 export interface FrontendStackProps extends cdk.StackProps {
@@ -34,10 +33,9 @@ export class FrontendStack extends cdk.Stack {
 
 		this.siteBucket = new cdk.aws_s3.Bucket(this, "SiteBucket", {
 			bucketName: `${environment}-${projectName}-${accountId}-${region}-site`,
-			publicReadAccess: true,
+			publicReadAccess: false,
 			autoDeleteObjects: true,
 			removalPolicy: cdk.RemovalPolicy.DESTROY,
-			accessControl: BucketAccessControl.BUCKET_OWNER_FULL_CONTROL,
 			websiteIndexDocument: "index.html",
 			websiteErrorDocument: "index.html",
 		});

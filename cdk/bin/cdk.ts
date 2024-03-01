@@ -7,6 +7,7 @@ import { FrontendStack } from "../lib/FrontendStack";
 const envVariables = {
 	environment: process.env["ENV"] ?? "",
 	projectName: process.env["PROJECT_NAME"] ?? "",
+	// Certificate manager only available for us-east-1 through CDK
 	region: "us-east-1",
 	accountId: process.env["AWS_ACCOUNT_ID"] ?? "",
 	domainName: process.env["DOMAIN_NAME"] ?? "",

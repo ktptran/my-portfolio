@@ -34,7 +34,7 @@ export class DeploymentStack extends cdk.Stack {
 			"Project",
 			{
 				buildSpec: cdk.aws_codebuild.BuildSpec.fromSourceFilename(
-					"./cicd/buildspec.yaml"
+					"./cicd/buildspec.yml"
 				),
 			}
 		);
