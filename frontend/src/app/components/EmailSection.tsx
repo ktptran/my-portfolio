@@ -15,21 +15,21 @@ function EmailSection() {
 			message: e.target.message.value,
 		};
 		const JSONdata = JSON.stringify(data);
-		const endpoint = "/api/email";
-		const options = {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSONdata,
-		};
-		const response = await fetch(endpoint, options);
-		const resData = await response.json();
-		console.log(resData);
-		if (response.status === 200) {
-			console.log("Message sent!");
-			setEmailSubmitted(true);
-		}
+		// const endpoint = "/api/email";
+		// const options = {
+		// 	method: "POST",
+		// 	headers: {
+		// 		"Content-Type": "application/json",
+		// 	},
+		// 	body: JSONdata,
+		// };
+		// const response = await fetch(endpoint, options);
+		// const resData = await response.json();
+		// console.log(resData);
+		// if (response.status === 200) {
+		// 	console.log("Message sent!");
+		// 	setEmailSubmitted(true);
+		// }
 	};
 
 	return (

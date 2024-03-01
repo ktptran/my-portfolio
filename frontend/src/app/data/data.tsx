@@ -1,4 +1,10 @@
-const aboutTabData = [
+interface TabData {
+	title: string;
+	id: string;
+	content: JSX.Element;
+}
+
+const aboutTabData: TabData[] = [
 	{
 		title: "Skills",
 		id: "skills",

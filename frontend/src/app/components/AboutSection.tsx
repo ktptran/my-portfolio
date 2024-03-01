@@ -47,8 +47,8 @@ const AboutSection = () => {
 				<Image
 					src="/images/about-image.jpeg"
 					alt="about-image"
-					width={550}
-					height={550}
+					width={500}
+					height={500}
 					priority={true}
 				/>
 				<div className="mt-4 md:mt-0 text-left flex flex-col h-full">
@@ -82,7 +82,7 @@ const AboutSection = () => {
 						</TabButton>
 					</div>
 					<div className="mt-4">
-						{aboutTabData.find((t) => t.id === tab).content}
+						{aboutTabData.find((t) => t.id === tab)?.content}
 					</div>
 				</div>
 			</div>

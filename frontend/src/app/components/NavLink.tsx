@@ -28,12 +28,9 @@ const scroll2El = (elID: string) => {
 	}
 };
 
-const onBtnClick = (e: {
-	preventDefault: () => void;
-	target: { getAttribute: (arg0: string) => any };
-}) => {
+const onBtnClick = (e: any) => {
 	e.preventDefault();
-	const goto = e.target.getAttribute("goto");
+	const goto = e.target.getAttribute("type");
 	setTimeout(() => {
 		scroll2El(goto);
 	}, 100);
@@ -41,7 +38,7 @@ const onBtnClick = (e: {
 
 const NavLink = ({ href, title }: { href: any; title: any }) => (
 	<button
-		goto={href}
+		type={href}
 		className="block py-2 pl-3 pr-4 text-[#ADB7BE] sm:text-xl rounded md:p-0 hover:text-white"
 		onClick={(e) => onBtnClick(e)}
 	>

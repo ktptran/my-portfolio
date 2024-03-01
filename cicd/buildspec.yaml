@@ -3,8 +3,10 @@ version: 0.1
 phases:
   build:
     commands:
-      - echo Nothing to do yet
+      - cd frontend
+      - npm run build
+      -
 artifacts:
   files:
     - "**/*"
-  base-directory: "frontend"
+  base-directory: "frontend/.out"
