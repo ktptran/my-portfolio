@@ -67,7 +67,9 @@ export class FrontendStack extends cdk.Stack {
 			"SiteDistribution",
 			{
 				viewerCertificate:
-					cdk.aws_cloudfront.ViewerCertificate.fromAcmCertificate(cert),
+					cdk.aws_cloudfront.ViewerCertificate.fromAcmCertificate(cert, {
+						aliases: [siteDomain, domainName],
+					}),
 				defaultRootObject: "index.html",
 				originConfigs: [
 					{
