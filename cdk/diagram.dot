@@ -52,6 +52,19 @@ digraph "Diagram" {
           style = "filled,rounded",
           fillcolor = "#e4e4e4",
         ];
+        "FrontendStack/Cert" [
+          label = " Cert",
+          fontsize = 12,
+          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Security-Identity-Compliance/64/Arch_AWS-Certificate-Manager_64@5x.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
         "FrontendStack/SiteBucket" [
           label = " SiteBucket",
           fontsize = 12,
@@ -77,6 +90,32 @@ digraph "Diagram" {
           labelloc = "b",
           width = 2,
           height = 2.266,
+        ];
+        "FrontendStack/WWWSiteAliasRecord" [
+          label = " WWWSiteAliasRecord",
+          fontsize = 12,
+          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Resource/Res_Networking-and-Content-Delivery/Res_48_Dark/Res_Amazon-Route-53-Hosted-Zone_48_Dark_gen.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
+        ];
+        "FrontendStack/SiteAliasRecord" [
+          label = " SiteAliasRecord",
+          fontsize = 12,
+          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Resource/Res_Networking-and-Content-Delivery/Res_48_Dark/Res_Amazon-Route-53-Hosted-Zone_48_Dark_gen.png",
+          imagescale = "true",
+          imagepos = "tc",
+          penwidth = "0",
+          shape = "node",
+          fixedsize = "true",
+          labelloc = "b",
+          width = 1.2,
+          height = 1.466,
         ];
         "FrontendStack/SiteDistribution/CFDistribution" [
           label = " CloudFront\nDistribution\nCFDistribution",
@@ -181,6 +220,15 @@ digraph "Diagram" {
     }
   }
   "FrontendStack/SiteBucket" -> "FrontendStack/CloudFrontOAI" [
+    dir = "both",
+  ];
+  "FrontendStack/WWWSiteAliasRecord" -> "FrontendStack/SiteDistribution/CFDistribution" [
+    dir = "both",
+  ];
+  "FrontendStack/SiteAliasRecord" -> "FrontendStack/SiteDistribution/CFDistribution" [
+    dir = "both",
+  ];
+  "FrontendStack/SiteDistribution/CFDistribution" -> "FrontendStack/Cert" [
     dir = "both",
   ];
   "FrontendStack/SiteDistribution/CFDistribution" -> "FrontendStack/SiteBucket" [

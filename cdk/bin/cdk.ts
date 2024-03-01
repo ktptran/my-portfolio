@@ -7,14 +7,19 @@ import { FrontendStack } from "../lib/FrontendStack";
 const envVariables = {
 	environment: process.env["ENV"] ?? "",
 	projectName: process.env["PROJECT_NAME"] ?? "",
-	region: process.env["AWS_REGION"] ?? "",
+	region: "us-east-1",
 	accountId: process.env["AWS_ACCOUNT_ID"] ?? "",
+	domainName: process.env["DOMAIN_NAME"] ?? "",
 };
 
 const app = new cdk.App();
 
 const frontendStack = new FrontendStack(app, "FrontendStack", {
 	...envVariables,
+	env: {
+		region: envVariables.region,
+		account: envVariables.accountId,
+	},
 });
 
 new DeploymentStack(app, "DeploymentStack", {
@@ -24,4 +29,8 @@ new DeploymentStack(app, "DeploymentStack", {
 	owner: process.env["GITHUB_OWNER"] ?? "",
 	repo: process.env["GITHUB_REPO"] ?? "",
 	token: process.env["GITHUB_TOKEN"] ?? "",
+	env: {
+		region: envVariables.region,
+		account: envVariables.accountId,
+	},
 });

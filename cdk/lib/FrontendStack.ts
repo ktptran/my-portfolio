@@ -1,4 +1,5 @@
 import * as cdk from "aws-cdk-lib";
+import { BucketAccessControl } from "aws-cdk-lib/aws-s3";
 import { Construct } from "constructs";
 
 export interface FrontendStackProps extends cdk.StackProps {
@@ -6,6 +7,7 @@ export interface FrontendStackProps extends cdk.StackProps {
 	environment: string;
 	accountId: string;
 	region: string;
+	domainName: string;
 }
 
 export class FrontendStack extends cdk.Stack {
@@ -14,15 +16,30 @@ export class FrontendStack extends cdk.Stack {
 	constructor(scope: Construct, id: string, props: FrontendStackProps) {
 		super(scope, id, props);
 
-		const { projectName, environment, accountId, region } = props;
+		const { projectName, environment, accountId, region, domainName } = props;
+		const siteDomain = "www." + domainName;
+
+		const zone = cdk.aws_route53.HostedZone.fromLookup(this, "Zone", {
+			domainName,
+		});
+
+		const cert = new cdk.aws_certificatemanager.Certificate(this, "Cert", {
+			certificateName: `${environment}-${projectName}-cert`,
+			domainName,
+			subjectAlternativeNames: [siteDomain],
+			validation:
+				cdk.aws_certificatemanager.CertificateValidation.fromDns(zone),
+		});
+		cert.applyRemovalPolicy(cdk.RemovalPolicy.DESTROY);
 
 		this.siteBucket = new cdk.aws_s3.Bucket(this, "SiteBucket", {
 			bucketName: `${environment}-${projectName}-${accountId}-${region}-site`,
-			websiteIndexDocument: "index.html",
-			websiteErrorDocument: "index.html",
-			publicReadAccess: false,
+			publicReadAccess: true,
 			autoDeleteObjects: true,
 			removalPolicy: cdk.RemovalPolicy.DESTROY,
+			accessControl: BucketAccessControl.BUCKET_OWNER_FULL_CONTROL,
+			websiteIndexDocument: "index.html",
+			websiteErrorDocument: "index.html",
 		});
 
 		const cloudfrontOAI = new cdk.aws_cloudfront.OriginAccessIdentity(
@@ -51,6 +68,9 @@ export class FrontendStack extends cdk.Stack {
 			this,
 			"SiteDistribution",
 			{
+				viewerCertificate:
+					cdk.aws_cloudfront.ViewerCertificate.fromAcmCertificate(cert),
+				defaultRootObject: "index.html",
 				originConfigs: [
 					{
 						s3OriginSource: {
@@ -63,6 +83,8 @@ export class FrontendStack extends cdk.Stack {
 								compress: true,
 								allowedMethods:
 									cdk.aws_cloudfront.CloudFrontAllowedMethods.GET_HEAD_OPTIONS,
+								viewerProtocolPolicy:
+									cdk.aws_cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
 							},
 						],
 					},
@@ -70,7 +92,34 @@ export class FrontendStack extends cdk.Stack {
 			}
 		);
 
+		// Creating Route 53 alias records
+		new cdk.CfnOutput(this, "CertCertificate", {
+			value: cert.certificateArn,
+			description: "Certificate ARN",
+		});
+
+		new cdk.aws_route53.ARecord(this, "WWWSiteAliasRecord", {
+			zone,
+			recordName: siteDomain,
+			target: cdk.aws_route53.RecordTarget.fromAlias(
+				new cdk.aws_route53_targets.CloudFrontTarget(siteDistribution)
+			),
+		});
+
+		new cdk.aws_route53.ARecord(this, "SiteAliasRecord", {
+			zone,
+			recordName: domainName,
+			target: cdk.aws_route53.RecordTarget.fromAlias(
+				new cdk.aws_route53_targets.CloudFrontTarget(siteDistribution)
+			),
+		});
+
 		// CloudFormation Outputs
+		new cdk.CfnOutput(this, "Certificate", {
+			value: cert.certificateArn,
+			description: "Certificate ARN",
+		});
+
 		new cdk.CfnOutput(this, "SiteBucketName", {
 			value: this.siteBucket.bucketName,
 			description: "Web storage bucket name",
