@@ -9,12 +9,12 @@ phases:
       - cd frontend
       - npm install -g next
       - npm install -g typescript
-      - yarn
+      - npm install
   build:
     commands:
       - echo Build started on `date`
       - echo Compiling code
-      - yarn build
+      - npm run build
 artifacts:
   files:
     - "**/*"
