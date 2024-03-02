@@ -33,9 +33,13 @@ export class DeploymentStack extends cdk.Stack {
 			this,
 			"Project",
 			{
+				projectName: `${environment}-${projectName}-project`,
 				buildSpec: cdk.aws_codebuild.BuildSpec.fromSourceFilename(
 					"./cicd/buildspec.yml"
 				),
+				environment: {
+					buildImage: cdk.aws_codebuild.LinuxBuildImage.AMAZON_LINUX_2_5,
+				},
 			}
 		);
 
@@ -70,6 +74,7 @@ export class DeploymentStack extends cdk.Stack {
 						jsonField: "myGithubToken",
 					}),
 					output: sourceArtifact,
+					branch: "master",
 				}),
 			],
 		};
