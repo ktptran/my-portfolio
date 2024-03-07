@@ -1,5 +1,9 @@
 version: 0.2
 
+env:
+  parameter-store:
+    RESEND_API_KEY: "/$ENV/$PROJECT_NAME/resend-api-key"
+
 phases:
   install:
     runtime-versions:
@@ -14,6 +18,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Compiling code
+      - export RESEND_API_KEY=${RESEND_API_KEY}
       - npm run build
 artifacts:
   files:

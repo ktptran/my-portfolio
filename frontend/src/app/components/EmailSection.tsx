@@ -15,21 +15,16 @@ function EmailSection() {
 			message: e.target.message.value,
 		};
 		const JSONdata = JSON.stringify(data);
-		// const endpoint = "/api/email";
-		// const options = {
-		// 	method: "POST",
-		// 	headers: {
-		// 		"Content-Type": "application/json",
-		// 	},
-		// 	body: JSONdata,
-		// };
-		// const response = await fetch(endpoint, options);
-		// const resData = await response.json();
-		// console.log(resData);
-		// if (response.status === 200) {
-		// 	console.log("Message sent!");
-		// 	setEmailSubmitted(true);
-		// }
+		const endpoint = "/api/send";
+		const options = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSONdata,
+		};
+		const response = await fetch(endpoint, options);
+		if (response.status === 200) setEmailSubmitted(true);
 	};
 
 	return (
@@ -136,7 +131,8 @@ function EmailSection() {
 						// If the email was submitted successfully, show a success message.
 						emailSubmitted && (
 							<p className="text-green-500 text-sm mt-2">
-								Email sent successfully
+								Email sent successfully! You will receive a confirmation email
+								in your inbox.
 							</p>
 						)
 					}

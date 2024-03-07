@@ -7,6 +7,13 @@ echo "Script directory: $SCRIPT_DIR"
 . $SCRIPT_DIR/env.sh
 . $SCRIPT_DIR/secret_env.sh
 
+# Create SSM Parameter
+aws ssm put-parameter \
+    --name "/$PROJECT_NAME/$ENV/resend-api-key" \
+    --value "$RESEND_API_KEY" \
+    --type String \
+    --tags "Key=Project,Value=$PROJECT_NAME"
+
 # Check for CDK Toolkit
 echo "Checking for CDK Bootstrap in current $AWS_REGION..."
 cfn=$(aws cloudformation describe-stacks \

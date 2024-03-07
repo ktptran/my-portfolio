@@ -40,6 +40,16 @@ export class DeploymentStack extends cdk.Stack {
 				environment: {
 					buildImage: cdk.aws_codebuild.LinuxBuildImage.AMAZON_LINUX_2_5,
 				},
+				environmentVariables: {
+					ENV: {
+						value: environment,
+						type: cdk.aws_codebuild.BuildEnvironmentVariableType.PLAINTEXT,
+					},
+					PROJECT_NAME: {
+						value: projectName,
+						type: cdk.aws_codebuild.BuildEnvironmentVariableType.PLAINTEXT,
+					},
+				},
 			}
 		);
 

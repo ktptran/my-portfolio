@@ -80,7 +80,7 @@ const aboutTabData: TabData[] = [
 						className="underline"
 						target="_blank"
 						rel="noopener noreferrer"
-						href="https://www.credly.com/badges/9847fc66-d698-4ed4-a375-5ee3a48ae82c"
+						href="https://www.credly.com/badges/f40429e4-17ad-4ca5-9808-222380272da9"
 					>
 						AWS Developer - Associate
 					</a>

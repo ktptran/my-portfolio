@@ -8,6 +8,7 @@ EMAIL=$1
 GITHUB_OWNER=$2 
 GITHUB_REPO=$3
 GITHUB_TOKEN=$4
+RESEND_API_KEY=$5
 
 # Generating secret_env.sh
 SECRET_ENV_EXPORT=$SCRIPT_DIR/secret_env.sh
@@ -16,7 +17,7 @@ sed -i -e "s/%EMAIL%/$EMAIL/g" $SECRET_ENV_EXPORT
 sed -i -e "s/%GITHUB_USERNAME%/$GITHUB_OWNER/g" $SECRET_ENV_EXPORT
 sed -i -e "s/%GITHUB_REPO%/$GITHUB_REPO/g" $SECRET_ENV_EXPORT
 sed -i -e "s/%GITHUB_TOKEN%/$GITHUB_TOKEN/g" $SECRET_ENV_EXPORT
-
+sed -i -e "s/%RESEND_API_KEY%/$RESEND_API_KEY/g" $SECRET_ENV_EXPORT
 
 echo "Generated secret environment script"
 cat $SECRET_ENV_EXPORT
