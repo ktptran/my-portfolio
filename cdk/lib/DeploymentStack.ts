@@ -29,6 +29,25 @@ export class DeploymentStack extends cdk.Stack {
 			token,
 		} = props;
 
+		const codeBuildRole = new cdk.aws_iam.Role(this, "CodeBuildRole", {
+			assumedBy: new cdk.aws_iam.ServicePrincipal("codebuild.amazonaws.com"),
+		});
+
+		codeBuildRole.addToPolicy(
+			cdk.aws_iam.PolicyStatement.fromJson({
+				Effect: "Allow",
+				Action: ["ssm:DescribeParameters"],
+				Resource: "*",
+			})
+		);
+		codeBuildRole.addToPolicy(
+			cdk.aws_iam.PolicyStatement.fromJson({
+				Effect: "Allow",
+				Action: ["ssm:GetParameters"],
+				Resource: `arn:aws:ssm:${region}:${accountId}:parameter/${projectName}/${environment}/*`,
+			})
+		);
+
 		const codeBuildProject = new cdk.aws_codebuild.PipelineProject(
 			this,
 			"Project",

@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   parameter-store:
-    RESEND_API_KEY: "/$ENV/$PROJECT_NAME/resend-api-key"
+    RESEND_API_KEY: "/$PROJECT_NAME/$ENV/resend-api-key"
 
 phases:
   install:
