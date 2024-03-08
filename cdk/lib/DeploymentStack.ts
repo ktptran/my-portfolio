@@ -69,6 +69,7 @@ export class DeploymentStack extends cdk.Stack {
 						type: cdk.aws_codebuild.BuildEnvironmentVariableType.PLAINTEXT,
 					},
 				},
+				role: codeBuildRole,
 			}
 		);
 

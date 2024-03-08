@@ -9,19 +9,17 @@ function EmailSection() {
 	const [emailSubmitted, setEmailSubmitted] = useState(false);
 	const handleSubmit = async (e: any) => {
 		e.preventDefault();
-		const data = {
-			email: e.target.email.value,
-			subject: e.target.subject.value,
-			message: e.target.message.value,
-		};
-		const JSONdata = JSON.stringify(data);
 		const endpoint = "/api/send";
 		const options = {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSONdata,
+			body: JSON.stringify({
+				email: e.target.email.value,
+				subject: e.target.subject.value,
+				message: e.target.message.value,
+			}),
 		};
 		const response = await fetch(endpoint, options);
 		if (response.status === 200) setEmailSubmitted(true);
