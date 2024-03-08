@@ -23,8 +23,7 @@ phases:
 artifacts:
   files:
     - "**/*"
-  base-directory: "frontend/out"
+  base-directory: "frontend/.next"
 cache:
   paths:
     - "node_modules/**/*" # Cache `node_modules` for faster `yarn` or `npm i`
-    - ".next/cache/**/*" # Cache Next.js for faster application rebuilds
