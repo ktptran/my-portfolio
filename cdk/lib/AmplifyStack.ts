@@ -66,7 +66,7 @@ export class AmplifyStack extends cdk.Stack {
 					value: environment,
 				},
 			],
-			buildSpec: fs.readFileSync("../cicd/buildspec.yml", "utf8"),
+			buildSpec: fs.readFileSync("../cicd/amplify.yml", "utf8"),
 		});
 
 		const appId = amplifyApp.attrAppId;
