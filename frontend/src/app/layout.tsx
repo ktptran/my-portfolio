@@ -6,6 +6,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+	metadataBase: new URL(meta.URL),
 	title: meta.siteName,
 	description: meta.description,
 	openGraph: {
@@ -22,6 +23,12 @@ export const metadata: Metadata = {
 		],
 		locale: meta.og.locale,
 		type: meta.og.type,
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: meta.title,
+		description: meta.description,
+		images: [meta.og.ogImage],
 	},
 	robots: {
 		index: true,
