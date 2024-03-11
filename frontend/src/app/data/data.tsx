@@ -204,7 +204,7 @@ const navLinks = [
 const meta: Meta = {
 	URL: "https://www.ktptran.xyz",
 	siteName: "Kevin Tran | Portfolio",
-	title: "Learn about Kevin and his projects.",
+	title: "Kevin Tran: Solutions Architect Portfolio",
 	description:
 		"Kevin is an AWS Solutions Architect and Full-Stack Engineer. Learn more about his skills, some of the projects he worked on, and how to get in contact with him!",
 	og: {
