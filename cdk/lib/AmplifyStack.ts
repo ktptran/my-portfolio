@@ -65,12 +65,14 @@ export class AmplifyStack extends cdk.Stack {
 		new cdk.aws_amplify.CfnBranch(this, "MasterBranch", {
 			appId,
 			branchName: "master",
+			framework: "Next.js - SSR",
 			description: `Master branch of ${projectName}`,
 		});
 
 		new cdk.aws_amplify.CfnBranch(this, "DevBranch", {
 			appId,
 			branchName: "dev",
+			framework: "Next.js - SSR",
 			description: `Dev branch of ${projectName}`,
 		});
 
