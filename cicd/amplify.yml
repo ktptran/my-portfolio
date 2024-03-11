@@ -1,5 +1,3 @@
-# RESEND_API_KEY: "/$PROJECT_NAME/$ENV/resend-api-key"
-
 version: 1
 frontend:
   phases:
@@ -13,14 +11,17 @@ frontend:
         - echo Build started on `date`
         - echo Compiling code
         - node -v
-        - echo "AWS App ID: $AWS_APP_ID"
-        - echo "AWS Branch: $AWS_BRANCH"
-        - export RESEND_API_KEY=$(aws ssm get-parameter --name /amplify/$AWS_APP_ID/$AWS_BRANCH/RESEND_KEY --with-decryption --query "Parameter.Value" --output text)
+        # - export RESEND_API_KEY=$(aws ssm get-parameter --name /amplify/$AWS_APP_ID/$AWS_BRANCH/RESEND_KEY --with-decryption --query "Parameter.Value" --output text)
         - npm run build
+    postBuild:
+      commands:
+        - cd .next
+        - ls
   artifacts:
-    baseDirectory: frontend/.next
+    baseDirectory: /frontend/out
     files:
       - "**/*"
   cache:
     paths:
-      - node_modules/**/*
+      - node_modules/**/* # Cache `node_modules` for faster `yarn` or `npm i`
+      - .next/cache/**/* # Cache Next.js for faster application rebuilds

@@ -1,29 +1,29 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+// import { useState } from "react";
 import GithubIcon from "../../../public/svg/github-icon.svg";
 import HuggingFaceIcon from "../../../public/svg/hf-icon.svg";
 import LinkedInIcon from "../../../public/svg/linkedin-icon.svg";
 
 function EmailSection() {
-	const [emailSubmitted, setEmailSubmitted] = useState(false);
-	const handleSubmit = async (e: any) => {
-		e.preventDefault();
-		const endpoint = "/api/send";
-		const options = {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				email: e.target.email.value,
-				subject: e.target.subject.value,
-				message: e.target.message.value,
-			}),
-		};
-		const response = await fetch(endpoint, options);
-		if (response.status === 200) setEmailSubmitted(true);
-	};
+	// const [emailSubmitted, setEmailSubmitted] = useState(false);
+	// const handleSubmit = async (e: any) => {
+	// 	e.preventDefault();
+	// 	const endpoint = "/api/send";
+	// 	const options = {
+	// 		method: "POST",
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 		},
+	// 		body: JSON.stringify({
+	// 			email: e.target.email.value,
+	// 			subject: e.target.subject.value,
+	// 			message: e.target.message.value,
+	// 		}),
+	// 	};
+	// 	const response = await fetch(endpoint, options);
+	// 	if (response.status === 200) setEmailSubmitted(true);
+	// };
 
 	return (
 		<section
@@ -72,7 +72,7 @@ function EmailSection() {
 				</div>
 			</div>
 			<div>
-				<form className="flex flex-col" onSubmit={handleSubmit}>
+				{/* <form className="flex flex-col" onSubmit={handleSubmit}>
 					<div className="mb-6">
 						<label
 							htmlFor="email"
@@ -134,7 +134,7 @@ function EmailSection() {
 							</p>
 						)
 					}
-				</form>
+				</form> */}
 			</div>
 		</section>
 	);
