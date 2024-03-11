@@ -43,7 +43,7 @@ export class AmplifyStack extends cdk.Stack {
 		const amplifyApp = new cdk.aws_amplify.CfnApp(this, "AmplifyApp", {
 			name: projectName,
 			accessToken: token,
-			platform: "WEB_DYNAMIC",
+			platform: "WEB_COMPUTE",
 			enableBranchAutoDeletion: true,
 			repository: repo,
 			iamServiceRole: amplifyRole.roleArn,
