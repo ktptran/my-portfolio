@@ -56,6 +56,14 @@ export class AmplifyStack extends cdk.Stack {
 					name: "ENV",
 					value: environment,
 				},
+				{
+					name: "AMPLIFY_MONOREPO_APP_ROOT",
+					value: "frontend",
+				},
+				{
+					name: "AMPLIFY_DIFF_DEPLOY",
+					value: "false",
+				},
 			],
 			buildSpec: fs.readFileSync("../cicd/amplify.yml", "utf8"),
 		});

@@ -1,10 +1,30 @@
 "use client";
 import Image from "next/image";
+import { useState } from "react";
 import GithubIcon from "../../../public/svg/github-icon.svg";
 import HuggingFaceIcon from "../../../public/svg/hf-icon.svg";
 import LinkedInIcon from "../../../public/svg/linkedin-icon.svg";
 
 function EmailSection() {
+	const [emailSubmitted, setEmailSubmitted] = useState(false);
+	const handleSubmit = async (e: any) => {
+		e.preventDefault();
+		const endpoint = "/api/send";
+		const options = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				email: e.target.email.value,
+				subject: e.target.subject.value,
+				message: e.target.message.value,
+			}),
+		};
+		const response = await fetch(endpoint, options);
+		if (response.status === 200) setEmailSubmitted(true);
+	};
+
 	return (
 		<section
 			className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative"
@@ -51,7 +71,71 @@ function EmailSection() {
 					</a>
 				</div>
 			</div>
-			<div></div>
+			<div>
+				<form className="flex flex-col" onSubmit={handleSubmit}>
+					<div className="mb-6">
+						<label
+							htmlFor="email"
+							className="text-white block text-sm mb-2 font-medium"
+						>
+							Your email
+						</label>
+						<input
+							name="email"
+							type="email"
+							id="email"
+							required
+							className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+							placeholder="example@gmail.com"
+						/>
+					</div>
+					<div className="mb-6">
+						<label
+							htmlFor="subject"
+							className="text-white block text-sm mb-2 font-medium"
+						>
+							Subject
+						</label>
+						<input
+							name="subject"
+							type="text"
+							id="subject"
+							required
+							className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+							placeholder="Just saying hi!"
+						/>
+					</div>
+					<div className="mb-6">
+						<label
+							htmlFor="message"
+							className="text-white block text-sm mb-2 font-medium"
+						>
+							Message
+						</label>
+						<textarea
+							name="message"
+							id="message"
+							className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+							placeholder="Let's talk about..."
+						/>
+					</div>
+					<button
+						type="submit"
+						className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+					>
+						Send Message
+					</button>
+					{
+						// If the email was submitted successfully, show a success message.
+						emailSubmitted && (
+							<p className="text-green-500 text-sm mt-2">
+								Email sent successfully! You will receive a confirmation email
+								in your inbox.
+							</p>
+						)
+					}
+				</form>
+			</div>
 		</section>
 	);
 }
