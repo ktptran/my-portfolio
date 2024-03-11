@@ -13,7 +13,9 @@ frontend:
         - echo Build started on `date`
         - echo Compiling code
         - node -v
-        - export RESEND_API_KEY="${secrets.RESEND_KEY}"
+        - echo "AWS App ID: $AWS_APP_ID"
+        - echo "AWS Branch: $AWS_BRANCH"
+        - export RESEND_API_KEY=$(aws ssm get-parameter --name /amplify/$AWS_APP_ID/$AWS_BRANCH/RESEND_KEY --with-decryption --query "Parameter.Value" --output text)
         - npm run build
   artifacts:
     baseDirectory: frontend/.next
