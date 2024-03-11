@@ -22,6 +22,7 @@ function EmailSection() {
 			}),
 		};
 		const response = await fetch(endpoint, options);
+		console.log(response);
 		if (response.status === 200) setEmailSubmitted(true);
 	};
 

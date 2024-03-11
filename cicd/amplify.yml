@@ -1,25 +1,25 @@
 version: 1
 applications:
-  - appRoot: frontend/
+  - appRoot: frontend
     frontend:
       phases:
         preBuild:
           commands:
             - echo Installing dependencies...
-            - cd frontend
             - npm ci
         build:
           commands:
             - echo Build started on `date`
             - echo Compiling code
             - node -v
+            - export RESEND_API_KEY=$(aws ssm get-parameter --name /amplify/$AWS_APP_ID/$AWS_BRANCH/RESEND_KEY --with-decryption --query "Parameter.Value" --output text)
             - npm run build
         postBuild:
           commands:
             - cd .next
             - ls
       artifacts:
-        baseDirectory: ./frontend/.next
+        baseDirectory: .next
         files:
           - "**/*"
       cache:
