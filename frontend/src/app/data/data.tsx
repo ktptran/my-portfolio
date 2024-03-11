@@ -4,6 +4,22 @@ interface TabData {
 	content: JSX.Element;
 }
 
+interface Meta {
+	URL: string | URL;
+	siteName: string;
+	title?: string;
+	description?: string;
+	themeColor?: string;
+	backgroundColor?: string;
+	og: {
+		locale: string;
+		type?: "website";
+		ogImage: string | URL;
+		width?: number;
+		height?: number;
+	};
+}
+
 const aboutTabData: TabData[] = [
 	{
 		title: "Skills",
@@ -185,4 +201,20 @@ const navLinks = [
 	},
 ];
 
-export { aboutTabData, achievementData, navLinks, projectsData };
+const meta: Meta = {
+	URL: "https://www.ktptran.xyz",
+	siteName: "Kevin Tran | Portfolio",
+	title: "Learn about Kevin and his projects.",
+	description:
+		"Kevin is an AWS Solutions Architect and Full-Stack Engineer. Learn more about his skills, some of the projects he worked on, and how to get in contact with him!",
+	og: {
+		locale: "en-US",
+		type: "website",
+		ogImage:
+			"https://github.com/ktptran/my-portfolio/blob/master/frontend/public/images/projects/portfolio.png",
+		width: 1200,
+		height: 630,
+	},
+};
+
+export { aboutTabData, achievementData, meta, navLinks, projectsData };
