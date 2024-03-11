@@ -34,19 +34,10 @@ export class AmplifyStack extends cdk.Stack {
 			assumedBy: new cdk.aws_iam.ServicePrincipal("amplify.amazonaws.com"),
 		});
 
-		amplifyRole.addToPolicy(
-			cdk.aws_iam.PolicyStatement.fromJson({
-				Effect: "Allow",
-				Action: ["ssm:DescribeParameters"],
-				Resource: "*",
-			})
-		);
-		amplifyRole.addToPolicy(
-			cdk.aws_iam.PolicyStatement.fromJson({
-				Effect: "Allow",
-				Action: ["ssm:GetParameters"],
-				Resource: `arn:aws:ssm:${region}:${accountId}:parameter/${projectName}/${environment}/*`,
-			})
+		amplifyRole.addManagedPolicy(
+			cdk.aws_iam.ManagedPolicy.fromAwsManagedPolicyName(
+				"AdministratorAccess-Amplify"
+			)
 		);
 
 		const amplifyApp = new cdk.aws_amplify.CfnApp(this, "AmplifyApp", {
@@ -83,20 +74,21 @@ export class AmplifyStack extends cdk.Stack {
 			description: `Dev branch of ${projectName}`,
 		});
 
-		new cdk.aws_amplify.CfnDomain(this, "Domain", {
-			appId,
-			domainName,
-			subDomainSettings: [
-				{
-					branchName: "master",
-					prefix: "",
-				},
-				{
-					branchName: "dev",
-					prefix: "dev",
-				},
-			],
-		});
+		// Uncomment out for production build
+		// new cdk.aws_amplify.CfnDomain(this, "Domain", {
+		// 	appId,
+		// 	domainName,
+		// 	subDomainSettings: [
+		// 		{
+		// 			branchName: "master",
+		// 			prefix: "",
+		// 		},
+		// 		{
+		// 			branchName: "dev",
+		// 			prefix: "dev",
+		// 		},
+		// 	],
+		// });
 
 		// CloudFormation Outputs
 		new cdk.CfnOutput(this, "AmplifyAppARN", {

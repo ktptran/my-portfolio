@@ -7,13 +7,6 @@ echo "Script directory: $SCRIPT_DIR"
 . $SCRIPT_DIR/env.sh
 . $SCRIPT_DIR/secret_env.sh
 
-# Create SSM Parameter
-aws ssm put-parameter \
-    --name "/$PROJECT_NAME/$ENV/resend-api-key" \
-    --value "$RESEND_API_KEY" \
-    --type String \
-    --tags "Key=Project,Value=$PROJECT_NAME"
-
 # Check for CDK Toolkit
 echo "Checking for CDK Bootstrap in current $AWS_REGION..."
 cfn=$(aws cloudformation describe-stacks \
@@ -30,12 +23,24 @@ cd $SCRIPT_DIR/../cdk
 cdk synth
 cdk deploy --all --require-approval never
 
-# Return to root project directory
-CLOUDFRONT_URL=$(aws cloudformation describe-stacks \
+# Create SSM Parameter
+AMPLIFY_ID=$(aws cloudformation describe-stacks \
     --region $AWS_REGION \
-    --stack-name WebStack \
-    --query 'Stacks[0].Outputs[?OutputKey==`CloudFrontDistributionDomainName`].OutputValue' \
+    --stack-name AmplifyStack \
+    --query 'Stacks[0].Outputs[?OutputKey==`AmplifyAppId`].OutputValue' \
     --output text)
+aws ssm put-parameter \
+    --name "/amplify/$AMPLIFY_ID/master/RESEND_KEY" \
+    --value "$RESEND_API_KEY" \
+    --type String \
+    --tags "Key=Project,Value=$PROJECT_NAME"
+aws ssm put-parameter \
+    --name "/amplify/$AMPLIFY_ID/dev/RESEND_KEY" \
+    --value "$RESEND_API_KEY" \
+    --type String \
+    --tags "Key=Project,Value=$PROJECT_NAME"
+
+# Return to root project directory
 echo "Changing back to root project directory"
 cd $SCRIPT_DIR/../
-echo "Your application is ready at: $CLOUDFRONT_URL"
+echo "Your application is ready at: $DOMAIN_NAME"

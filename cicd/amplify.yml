@@ -13,10 +13,10 @@ frontend:
         - echo Build started on `date`
         - echo Compiling code
         - node -v
-        - export RESEND_API_KEY=${RESEND_API_KEY}
+        - export RESEND_API_KEY="${secrets.RESEND_KEY}"
         - npm run build
   artifacts:
-    baseDirectory: frontend.next
+    baseDirectory: frontend/.next
     files:
       - "**/*"
   cache:
