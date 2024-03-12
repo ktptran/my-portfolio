@@ -9,8 +9,6 @@ const envVariables = {
 	accountId: process.env["AWS_ACCOUNT_ID"] ?? "",
 	domainName: process.env["DOMAIN_NAME"] ?? "",
 	region: process.env["AWS_REGION"] ?? "",
-	email: process.env["EMAIL"] ?? "",
-	owner: process.env["GITHUB_OWNER"] ?? "",
 	repo: process.env["GITHUB_REPO"] ?? "",
 	token: process.env["GITHUB_TOKEN"] ?? "",
 };

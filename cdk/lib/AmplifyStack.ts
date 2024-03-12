@@ -8,8 +8,6 @@ export interface AmplifyStackProps extends cdk.StackProps {
 	accountId: string;
 	region: string;
 	domainName: string;
-	email: string;
-	owner: string;
 	repo: string;
 	token: string;
 }
@@ -24,8 +22,6 @@ export class AmplifyStack extends cdk.Stack {
 			accountId,
 			region,
 			domainName,
-			email,
-			owner,
 			repo,
 			token,
 		} = props;

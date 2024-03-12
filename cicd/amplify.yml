@@ -13,6 +13,7 @@ applications:
             - echo Compiling code
             - node -v
             - export RESEND_API_KEY=$(aws ssm get-parameter --name /amplify/$AWS_APP_ID/$AWS_BRANCH/RESEND_KEY --with-decryption --query "Parameter.Value" --output text)
+            - echo "RESEND_API_KEY=\"$RESEND_API_KEY\"" >> .env
             - npm run build
         postBuild:
           commands:
