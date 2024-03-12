@@ -32,8 +32,6 @@ CDK_BUCKET=$(aws cloudformation describe-stacks \
 aws s3 rb s3://$CDK_BUCKET
 aws cloudformation delete-stack --stack-name CDKToolkit --region $AWS_REGION
 
-
-
 # Return to root project directory
 echo "Changing back to root project directory"
 cd $SCRIPT_DIR/../

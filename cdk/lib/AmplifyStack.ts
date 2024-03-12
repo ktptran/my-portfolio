@@ -80,21 +80,20 @@ export class AmplifyStack extends cdk.Stack {
 			description: `Dev branch of ${projectName}`,
 		});
 
-		// Uncomment out for production build
-		// new cdk.aws_amplify.CfnDomain(this, "Domain", {
-		// 	appId,
-		// 	domainName,
-		// 	subDomainSettings: [
-		// 		{
-		// 			branchName: "master",
-		// 			prefix: "",
-		// 		},
-		// 		{
-		// 			branchName: "dev",
-		// 			prefix: "dev",
-		// 		},
-		// 	],
-		// });
+		new cdk.aws_amplify.CfnDomain(this, "Domain", {
+			appId,
+			domainName,
+			subDomainSettings: [
+				{
+					branchName: "master",
+					prefix: "",
+				},
+				{
+					branchName: "dev",
+					prefix: "dev",
+				},
+			],
+		});
 
 		// CloudFormation Outputs
 		new cdk.CfnOutput(this, "AmplifyAppARN", {
