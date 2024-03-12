@@ -10,6 +10,8 @@ export interface AmplifyStackProps extends cdk.StackProps {
 	domainName: string;
 	repo: string;
 	token: string;
+	password: string;
+	username: string;
 }
 
 export class AmplifyStack extends cdk.Stack {
@@ -24,6 +26,8 @@ export class AmplifyStack extends cdk.Stack {
 			domainName,
 			repo,
 			token,
+			password,
+			username,
 		} = props;
 
 		const amplifyRole = new cdk.aws_iam.Role(this, "AmplifyRole", {
@@ -77,6 +81,11 @@ export class AmplifyStack extends cdk.Stack {
 			appId,
 			branchName: "dev",
 			framework: "Next.js - SSR",
+			basicAuthConfig: {
+				password,
+				username,
+				enableBasicAuth: true,
+			},
 			description: `Dev branch of ${projectName}`,
 		});
 

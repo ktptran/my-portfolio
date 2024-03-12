@@ -1,3 +1,55 @@
+- docs: updating all docs and assets with version 1 deployment
+- refact: secure url
+- refact: added in image/png to type
+- refact: changed url to base url
+- refact: added in SSL/TLS
+- refact: url of ogImage test
+- refact: deployment now supports resend
+- refact: added in path based on public folder
+- feat: twitter metadata
+- refact: revision of title
+- refact: added in metadata
+- refact: teardown script for deleting ssm parameter
+- feat: successful deployment to Amplify
+- bug: included applications in amplify.yml
+- feat: monorepo
+- refact: stable state testing for amplify
+- feat: refactoring to static for deployment
+- feat: revised
+- testing 1
+- test: testing deployment in amplify dev account
+- refact: amplify.yml script
+- refact: amplify app instead for dynamic rendering
+- refact: stable state for frontend locally
+- bug: revised ordering of variables
+- feat: email submission through website
+- refact: downloaded new files based on feedback from codebuild
+- refact: updated buildspec and cdk stack
+- try 3
+- yarn
+- bug: route 53 configuration error
+- feat: successful deployment to s3
+- refact; cdk scripts
+- feat: npm run build command bugs
+- feat: added icon.ico
+- feat: styling for mobile
+- feat: added in pcm functions
+- style: styling for footer and projects
+- refact: moved data out of components and into own separate file
+- docs: updated projects
+- refact: relational link opening up in new tab
+- refact: moved around placement of frontend
+- refact: revised information
+- refact: updated details for projects
+- feat: scrolling with navigation
+- feat: navbar
+- feat: initializing nextjs & tailwind
+- feat: added in SNS notification for failure on codepipeline
+- refact: adding in artifacts using base-directory of frontend
+- chore: removed SNS topic to test deployment
+- feat: adding into github to merge to master for testing deployment
+- feat: added in secrets manager github token
+- doc: changelog
 - feat: added in deployment configurations
 - docs: updated README.md
 - feat: generate secret environment shell script

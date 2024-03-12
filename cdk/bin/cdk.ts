@@ -11,6 +11,8 @@ const envVariables = {
 	region: process.env["AWS_REGION"] ?? "",
 	repo: process.env["GITHUB_REPO"] ?? "",
 	token: process.env["GITHUB_TOKEN"] ?? "",
+	username: process.env["USERNAME"] ?? "",
+	password: process.env["PASSWORD"] ?? "",
 };
 
 const app = new cdk.App();

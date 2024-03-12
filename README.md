@@ -4,12 +4,13 @@
 
 Want to get to know who Kevin Tran is or launch your own portfolio website in an automated fashion?
 
-This project provides a CI/CD pipeline for deploying a static website using Amazon Web Services.
+This project provides a CI/CD pipeline for deploying a portfolio website using Amazon Web Services.
 
 ### Objectives & Key Results
 
-1. Provide a platform to convey a static website.
+1. Provide a platform to convey a portfolio website.
 2. Automated deployment upon pushing to the master branch.
+3. Including a development branch that is password protected.
 
 ### Key Performance Indicators
 
@@ -46,7 +47,9 @@ GITHUB_REPO="my-portfolio"
 GITHUB_TOKEN="example"
 DOMAIN_NAME="example.xyz"
 RESEND_KEY="example"
-./scripts/generate_secret_env.sh $GITHUB_REPO $GITHUB_TOKEN $DOMAIN_NAME $RESEND_KEY
+USERNAME="example"
+PASSWORD="example"
+./scripts/generate_secret_env.sh $GITHUB_REPO $GITHUB_TOKEN $DOMAIN_NAME $RESEND_KEY $USERNAME $PASSWORD
 ```
 
 5. Run the following command to build and deploy the portfolio application:
@@ -65,7 +68,7 @@ Run the following command to teardown the portfolio application:
 
 ## Architecture Overview
 
-Upon pushing to the Github master branch, the AWS CodePipeline pulls the latest changes. These changes are processed through AWS CodeBuild and deployed to Amazon S3 which is delivered through Amazon CloudFront. The Amazon CloudFront is built in with a domain name configured through Route 53 with an associated SSL/TLS certificate through AWS Certificate Manager. If the pipeline fails at any point, the developer is notified of the errors through Amazon SNS.
+Upon pushing to the Github master branch, Amplify will retrieve the latest branch changes. These changes are processed through a CI/CD pipeline built into AWS Amplify. To retrieve credentials securely, the system uses the SSM Parameter Store. This is then routed through to Amazon Route 53 to provide DNS hosting capabilities for users to access.
 
 ![Architecture Diagram](docs/assets/architecture-diagram.png)
 
@@ -74,16 +77,11 @@ Upon pushing to the Github master branch, the AWS CodePipeline pulls the latest 
 | Path         | Description                                                    |
 | :----------- | :------------------------------------------------------------- |
 | cdk/         | AWS CDK source code                                            |
-| cicd/        | CodeBuild buildspec code                                       |
+| cicd/        | Amplify buildspec code                                         |
 | docs/assets/ | supporting assets for documentation.                           |
-| frontend/    | source code for React frontend                                 |
+| frontend/    | source code for NextJS frontend                                |
 | scripts/     | shell scripts to build, deploy, and interact with the project. |
-
-## Future State
-
-1. Refactor website to NextJS and update with projects.
-2. Add in ktptran.xyz domain name to hosted zone and deployment.
 
 ### Design Decisions
 
-This portfolio is a static website which is best suited for sever-side rendering. Between ReactJS and NextJS, NextJS offers server-side rendering. NextJS is a framework used to build UI and pages for the web app within the React Library.
+This portfolio is a static website which is best suited for sever-side rendering. Between ReactJS and NextJS, NextJS offers better server-side rendering. NextJS is a framework used to build UI and pages for the web app within the React Library.

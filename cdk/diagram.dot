@@ -27,10 +27,10 @@ digraph "Diagram" {
     fontsize = 8,
     margin = 8,
   ];
-  subgraph "App" {
-    subgraph "cluster-SubGraph.App" {
+  subgraph "AmplifyStack" {
+    subgraph "cluster-SubGraph.AmplifyStack" {
       graph [
-        label = "App",
+        label = "AmplifyStack",
         labelloc = "b",
         labeljust = "l",
         margin = "10",
@@ -38,224 +38,58 @@ digraph "Diagram" {
         penwidth = "2",
         pencolor = "#888888",
         style = "filled,rounded",
-        fillcolor = "#f3f3f3",
+        fillcolor = "#e4e4e4",
       ];
-      subgraph "cluster-SubGraph.FrontendStack" {
-        graph [
-          label = "FrontendStack",
-          labelloc = "b",
-          labeljust = "l",
-          margin = "10",
-          fontsize = "16",
-          penwidth = "2",
-          pencolor = "#888888",
-          style = "filled,rounded",
-          fillcolor = "#e4e4e4",
-        ];
-        "FrontendStack/Cert" [
-          label = " Cert",
-          fontsize = 12,
-          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Security-Identity-Compliance/64/Arch_AWS-Certificate-Manager_64@5x.png",
-          imagescale = "true",
-          imagepos = "tc",
-          penwidth = "0",
-          shape = "node",
-          fixedsize = "true",
-          labelloc = "b",
-          width = 1.2,
-          height = 1.466,
-        ];
-        "FrontendStack/SiteBucket" [
-          label = " SiteBucket",
-          fontsize = 12,
-          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Storage/64/Arch_Amazon-S3-Standard_64@5x.png",
-          imagescale = "true",
-          imagepos = "tc",
-          penwidth = "0",
-          shape = "node",
-          fixedsize = "true",
-          labelloc = "b",
-          width = 2,
-          height = 2.266,
-        ];
-        "FrontendStack/CloudFrontOAI" [
-          label = " CloudFrontOAI",
-          fontsize = 12,
-          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Resource/Res_Security-Identity-and-Compliance/Res_48_Dark/Res_AWS-Identity-Access-Management_Permissions_48_Dark_gen.png",
-          imagescale = "true",
-          imagepos = "tc",
-          penwidth = "0",
-          shape = "node",
-          fixedsize = "true",
-          labelloc = "b",
-          width = 2,
-          height = 2.266,
-        ];
-        "FrontendStack/WWWSiteAliasRecord" [
-          label = " WWWSiteAliasRecord",
-          fontsize = 12,
-          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Resource/Res_Networking-and-Content-Delivery/Res_48_Dark/Res_Amazon-Route-53-Hosted-Zone_48_Dark_gen.png",
-          imagescale = "true",
-          imagepos = "tc",
-          penwidth = "0",
-          shape = "node",
-          fixedsize = "true",
-          labelloc = "b",
-          width = 1.2,
-          height = 1.466,
-        ];
-        "FrontendStack/SiteAliasRecord" [
-          label = " SiteAliasRecord",
-          fontsize = 12,
-          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Resource/Res_Networking-and-Content-Delivery/Res_48_Dark/Res_Amazon-Route-53-Hosted-Zone_48_Dark_gen.png",
-          imagescale = "true",
-          imagepos = "tc",
-          penwidth = "0",
-          shape = "node",
-          fixedsize = "true",
-          labelloc = "b",
-          width = 1.2,
-          height = 1.466,
-        ];
-        "FrontendStack/SiteDistribution/CFDistribution" [
-          label = " CloudFront\nDistribution\nCFDistribution",
-          fontsize = 12,
-          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Networking-Content/64/Arch_Amazon-CloudFront_64@5x.png",
-          imagescale = "true",
-          imagepos = "tc",
-          penwidth = "0",
-          shape = "node",
-          fixedsize = "true",
-          labelloc = "b",
-          width = 2,
-          height = 2.6979999999999995,
-        ];
-      }
-      subgraph "cluster-SubGraph.DeploymentStack" {
-        graph [
-          label = "DeploymentStack",
-          labelloc = "b",
-          labeljust = "l",
-          margin = "10",
-          fontsize = "16",
-          penwidth = "2",
-          pencolor = "#888888",
-          style = "filled,rounded",
-          fillcolor = "#e4e4e4",
-        ];
-        "DeploymentStack/Project" [
-          label = " Project",
-          fontsize = 12,
-          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Developer- Tools/64/Arch_Amazon-CodeBuild_64@5x.png",
-          imagescale = "true",
-          imagepos = "tc",
-          penwidth = "0",
-          shape = "node",
-          fixedsize = "true",
-          labelloc = "b",
-          width = 1.2,
-          height = 1.466,
-        ];
-        "DeploymentStack/Secret" [
-          label = " Secret",
-          fontsize = 12,
-          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Security-Identity-Compliance/64/Arch_AWS-Secrets-Manager_64@5x.png",
-          imagescale = "true",
-          imagepos = "tc",
-          penwidth = "0",
-          shape = "node",
-          fixedsize = "true",
-          labelloc = "b",
-          width = 1.2,
-          height = 1.466,
-        ];
-        "DeploymentStack/ArtifactBucket" [
-          label = " ArtifactBucket",
-          fontsize = 12,
-          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Storage/64/Arch_Amazon-S3-Standard_64@5x.png",
-          imagescale = "true",
-          imagepos = "tc",
-          penwidth = "0",
-          shape = "node",
-          fixedsize = "true",
-          labelloc = "b",
-          width = 2,
-          height = 2.266,
-        ];
-        "DeploymentStack/DeploymentPipeline" [
-          label = " DeploymentPipeline",
-          fontsize = 12,
-          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Developer- Tools/64/Arch_AWS-CodePipeline_64@5x.png",
-          imagescale = "true",
-          imagepos = "tc",
-          penwidth = "0",
-          shape = "node",
-          fixedsize = "true",
-          labelloc = "b",
-          width = 1.2,
-          height = 1.466,
-        ];
-        "DeploymentStack/DeploymentTopic" [
-          label = " DeploymentTopic",
-          fontsize = 12,
-          image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_App-Integration/Arch_64/Arch_AWS-Simple-Notification-Service_64@5x.png",
-          imagescale = "true",
-          imagepos = "tc",
-          penwidth = "0",
-          shape = "node",
-          fixedsize = "true",
-          labelloc = "b",
-          width = 2,
-          height = 2.266,
-        ];
-        "DeploymentStack/DeploymentEmailSubscription" [
-          label = "\nDeploymentEmailSubscr",
-          fontsize = 12,
-        ];
-        "DeploymentStack/CodePipelineNotifications" [
-          label = "\nCodePipelineNotificat",
-          fontsize = 12,
-        ];
-      }
+      "AmplifyStack/AmplifyRole" [
+        label = " AmplifyRole",
+        fontsize = 12,
+        image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Security-Identity-Compliance/64/Arch_AWS-Identity-and-Access-Management_64@5x.png",
+        imagescale = "true",
+        imagepos = "tc",
+        penwidth = "0",
+        shape = "node",
+        fixedsize = "true",
+        labelloc = "b",
+        width = 1.2,
+        height = 1.466,
+      ];
+      "AmplifyStack/AmplifyApp" [
+        label = " Amplify App\nAmplifyApp",
+        fontsize = 12,
+        image = "/usr/local/lib/node_modules/cdk-dia/icons/aws/Service/Arch_Mobile/64/Arch_AWS-Amplify-Console_64@5x.png",
+        imagescale = "true",
+        imagepos = "tc",
+        penwidth = "0",
+        shape = "node",
+        fixedsize = "true",
+        labelloc = "b",
+        width = 2,
+        height = 2.4819999999999998,
+      ];
+      "AmplifyStack/MasterBranch" [
+        label = " AMPLIFY BRANCH\nMasterBranch",
+        fontsize = 12,
+      ];
+      "AmplifyStack/DevBranch" [
+        label = " AMPLIFY BRANCH\nDevBranch",
+        fontsize = 12,
+      ];
+      "AmplifyStack/Domain" [
+        label = " AMPLIFY DOMAIN\nDomain",
+        fontsize = 12,
+      ];
     }
   }
-  "FrontendStack/SiteBucket" -> "FrontendStack/CloudFrontOAI" [
+  "AmplifyStack/AmplifyApp" -> "AmplifyStack/AmplifyRole" [
     dir = "both",
   ];
-  "FrontendStack/WWWSiteAliasRecord" -> "FrontendStack/SiteDistribution/CFDistribution" [
+  "AmplifyStack/MasterBranch" -> "AmplifyStack/AmplifyApp" [
     dir = "both",
   ];
-  "FrontendStack/SiteAliasRecord" -> "FrontendStack/SiteDistribution/CFDistribution" [
+  "AmplifyStack/DevBranch" -> "AmplifyStack/AmplifyApp" [
     dir = "both",
   ];
-  "FrontendStack/SiteDistribution/CFDistribution" -> "FrontendStack/Cert" [
-    dir = "both",
-  ];
-  "FrontendStack/SiteDistribution/CFDistribution" -> "FrontendStack/SiteBucket" [
-    dir = "both",
-  ];
-  "FrontendStack/SiteDistribution/CFDistribution" -> "FrontendStack/CloudFrontOAI" [
-    dir = "both",
-  ];
-  "DeploymentStack/Project" -> "DeploymentStack/ArtifactBucket" [
-    dir = "both",
-  ];
-  "DeploymentStack/DeploymentPipeline" -> "DeploymentStack/ArtifactBucket" [
-    dir = "both",
-  ];
-  "DeploymentStack/DeploymentPipeline" -> "FrontendStack/SiteBucket" [
-    dir = "both",
-  ];
-  "DeploymentStack/DeploymentPipeline" -> "DeploymentStack/Project" [
-    dir = "both",
-  ];
-  "DeploymentStack/DeploymentEmailSubscription" -> "DeploymentStack/DeploymentTopic" [
-    dir = "both",
-  ];
-  "DeploymentStack/CodePipelineNotifications" -> "DeploymentStack/DeploymentPipeline" [
-    dir = "both",
-  ];
-  "DeploymentStack/CodePipelineNotifications" -> "DeploymentStack/DeploymentTopic" [
+  "AmplifyStack/Domain" -> "AmplifyStack/AmplifyApp" [
     dir = "both",
   ];
 }
