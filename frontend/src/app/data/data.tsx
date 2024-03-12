@@ -210,7 +210,7 @@ const meta: Meta = {
 	og: {
 		locale: "en-US",
 		type: "website",
-		ogImage: "images/projects/portfolio.png",
+		ogImage: "/images/projects/portfolio.png",
 		width: 1200,
 		height: 630,
 	},
