@@ -18,6 +18,7 @@ interface Meta {
 		ogImage: string | URL;
 		width?: number;
 		height?: number;
+		alt?: string;
 	};
 	authors: any;
 }
@@ -208,7 +209,6 @@ const meta: Meta = {
 	URL: "https://ktptran.xyz",
 	siteName: "Kevin Tran | Portfolio",
 	title: "Kevin Tran: Solutions Architect Portfolio",
-
 	description:
 		"Kevin is an AWS Solutions Architect and Full-Stack Engineer. Learn more about his skills, some of the projects he worked on, and how to get in contact with him!",
 	og: {
@@ -217,6 +217,7 @@ const meta: Meta = {
 		ogImage: "/images/projects/portfolio.png",
 		width: 1200,
 		height: 630,
+		alt: "Opengraph Image",
 	},
 	authors: [
 		{
