@@ -202,7 +202,7 @@ const navLinks = [
 ];
 
 const meta: Meta = {
-	URL: "https://www.ktptran.xyz",
+	URL: "https://ktptran.xyz",
 	siteName: "Kevin Tran | Portfolio",
 	title: "Kevin Tran: Solutions Architect Portfolio",
 	description:

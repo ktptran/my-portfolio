@@ -92,6 +92,10 @@ export class AmplifyStack extends cdk.Stack {
 					branchName: "dev",
 					prefix: "dev",
 				},
+				{
+					branchName: "master",
+					prefix: "www",
+				},
 			],
 		});
 
