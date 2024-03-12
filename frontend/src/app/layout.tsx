@@ -9,7 +9,9 @@ export const metadata: Metadata = {
 	metadataBase: new URL(meta.URL),
 	title: meta.siteName,
 	description: meta.description,
+	authors: meta.authors,
 	openGraph: {
+		type: meta.type,
 		title: meta.title,
 		description: meta.description,
 		url: meta.URL,
@@ -19,10 +21,11 @@ export const metadata: Metadata = {
 				url: meta.og.ogImage,
 				width: meta.og.width,
 				height: meta.og.height,
+				type: meta.og.type,
+				secureUrl: meta.og.ogImage,
 			},
 		],
 		locale: meta.og.locale,
-		type: meta.og.type,
 	},
 	twitter: {
 		card: "summary_large_image",

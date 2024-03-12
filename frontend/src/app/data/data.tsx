@@ -5,6 +5,7 @@ interface TabData {
 }
 
 interface Meta {
+	type: "website";
 	URL: string | URL;
 	siteName: string;
 	title?: string;
@@ -13,11 +14,12 @@ interface Meta {
 	backgroundColor?: string;
 	og: {
 		locale: string;
-		type?: "website";
+		type?: string;
 		ogImage: string | URL;
 		width?: number;
 		height?: number;
 	};
+	authors: any;
 }
 
 const aboutTabData: TabData[] = [
@@ -202,18 +204,26 @@ const navLinks = [
 ];
 
 const meta: Meta = {
+	type: "website",
 	URL: "https://ktptran.xyz",
 	siteName: "Kevin Tran | Portfolio",
 	title: "Kevin Tran: Solutions Architect Portfolio",
+
 	description:
 		"Kevin is an AWS Solutions Architect and Full-Stack Engineer. Learn more about his skills, some of the projects he worked on, and how to get in contact with him!",
 	og: {
 		locale: "en-US",
-		type: "website",
+		type: "image/png",
 		ogImage: "/images/projects/portfolio.png",
 		width: 1200,
 		height: 630,
 	},
+	authors: [
+		{
+			url: "https://www.linkedin.com/in/ktptran/",
+			name: "Kevin Tran",
+		},
+	],
 };
 
 export { aboutTabData, achievementData, meta, navLinks, projectsData };
