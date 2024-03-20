@@ -23,23 +23,6 @@ cd $SCRIPT_DIR/../cdk
 cdk synth
 cdk deploy --all --require-approval never
 
-# Create SSM Parameter
-AMPLIFY_ID=$(aws cloudformation describe-stacks \
-    --region $AWS_REGION \
-    --stack-name AmplifyStack \
-    --query 'Stacks[0].Outputs[?OutputKey==`AmplifyAppId`].OutputValue' \
-    --output text)
-aws ssm put-parameter \
-    --name "/amplify/$AMPLIFY_ID/master/RESEND_KEY" \
-    --value "$RESEND_API_KEY" \
-    --type String \
-    --tags "Key=Project,Value=$PROJECT_NAME"
-aws ssm put-parameter \
-    --name "/amplify/$AMPLIFY_ID/dev/RESEND_KEY" \
-    --value "$RESEND_API_KEY" \
-    --type String \
-    --tags "Key=Project,Value=$PROJECT_NAME"
-
 # Return to root project directory
 echo "Changing back to root project directory"
 cd $SCRIPT_DIR/../

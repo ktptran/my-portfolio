@@ -46,10 +46,9 @@ aws configure
 GITHUB_REPO="my-portfolio"
 GITHUB_TOKEN="example"
 DOMAIN_NAME="example.xyz"
-RESEND_KEY="example"
 USERNAME="example"
 PASSWORD="example"
-./scripts/generate_secret_env.sh $GITHUB_REPO $GITHUB_TOKEN $DOMAIN_NAME $RESEND_KEY $USERNAME $PASSWORD
+./scripts/generate_secret_env.sh $GITHUB_REPO $GITHUB_TOKEN $DOMAIN_NAME $USERNAME $PASSWORD
 ```
 
 5. Run the following command to build and deploy the portfolio application:
@@ -68,7 +67,7 @@ Run the following command to teardown the portfolio application:
 
 ## Architecture Overview
 
-Upon pushing to the Github master branch, Amplify will retrieve the latest branch changes. These changes are processed through a CI/CD pipeline built into AWS Amplify. To retrieve credentials securely, the system uses the SSM Parameter Store. This is then routed through to Amazon Route 53 to provide DNS hosting capabilities for users to access.
+Upon pushing to the Github master branch, Amplify will retrieve the latest branch changes. These changes are processed through a CI/CD pipeline built into AWS Amplify.
 
 ![Architecture Diagram](docs/assets/architecture-diagram.png)
 

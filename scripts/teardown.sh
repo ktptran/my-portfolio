@@ -7,15 +7,6 @@ echo "Script directory: $SCRIPT_DIR"
 . $SCRIPT_DIR/env.sh
 . $SCRIPT_DIR/secret_env.sh
 
-# Delete SSM Parameter
-AMPLIFY_ID=$(aws cloudformation describe-stacks \
-    --region $AWS_REGION \
-    --stack-name AmplifyStack \
-    --query 'Stacks[0].Outputs[?OutputKey==`AmplifyAppId`].OutputValue' \
-    --output text)
-aws ssm delete-parameter --name "/amplify/$AMPLIFY_ID/master/RESEND_KEY"
-aws ssm delete-parameter --name "/amplify/$AMPLIFY_ID/dev/RESEND_KEY"
-
 # Destroying CDK
 echo "Tearing down CDK application..."
 cd $SCRIPT_DIR/../cdk
