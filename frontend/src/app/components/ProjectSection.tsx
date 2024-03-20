@@ -43,7 +43,7 @@ const ProjectCard = ({
 	tag: any;
 }) => {
 	return (
-		<div>
+		<div className="pb-8">
 			<div
 				className="h-52 md:h-72 rounded-t-xl relative group"
 				style={{
@@ -119,23 +119,6 @@ const ProjectsSection = () => {
 			<h2 className="text-center text-4xl font-bold text-white mt-4 mb-4 md:mb-6">
 				My Projects
 			</h2>
-			<div className="text-white flex flex-row justify-center items-center gap-2 py-6">
-				<ProjectTag
-					onClick={handleTagChange}
-					name="All"
-					isSelected={tag === "All"}
-				/>
-				<ProjectTag
-					onClick={handleTagChange}
-					name="AWS"
-					isSelected={tag === "AWS"}
-				/>
-				<ProjectTag
-					onClick={handleTagChange}
-					name="AI/ML"
-					isSelected={tag === "AI/ML"}
-				/>
-			</div>
 			<ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
 				{filteredProjects.map((project, index) => (
 					<motion.li

@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { useState, useTransition } from "react";
 import { aboutTabData } from "../data/data";
 
@@ -44,14 +43,7 @@ const AboutSection = () => {
 	return (
 		<section className="text-white" id="about">
 			<div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py16 xl:px-16">
-				<Image
-					src="/images/about-image.jpeg"
-					alt="about-image"
-					width={500}
-					height={500}
-					priority={true}
-				/>
-				<div className="mt-4 md:mt-0 text-left flex flex-col h-full">
+				<div>
 					<h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
 					<p className="text-base md:text-lg">
 						I am a Solutions Architect with a passion for aiding customers
@@ -61,6 +53,8 @@ const AboutSection = () => {
 						inventory detection, and heterogeneous data unification. In my free
 						time, I enjoy reading, running, and writing.
 					</p>
+				</div>
+				<div className="mt-4 md:mt-0 text-left flex flex-col h-full">
 					<div className="flex flex-row justify-start mt-4">
 						<TabButton
 							selectTab={() => handleTabChange("skills")}
@@ -69,16 +63,16 @@ const AboutSection = () => {
 							Skills
 						</TabButton>
 						<TabButton
-							selectTab={() => handleTabChange("education")}
-							active={tab === "education"}
-						>
-							Education
-						</TabButton>
-						<TabButton
 							selectTab={() => handleTabChange("certifications")}
 							active={tab === "certifications"}
 						>
 							Certifications
+						</TabButton>
+						<TabButton
+							selectTab={() => handleTabChange("education")}
+							active={tab === "education"}
+						>
+							Education
 						</TabButton>
 					</div>
 					<div className="mt-4">

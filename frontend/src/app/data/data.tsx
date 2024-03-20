@@ -122,15 +122,6 @@ const aboutTabData: TabData[] = [
 const projectsData = [
 	{
 		id: 1,
-		title: "NextJS Portfolio Website",
-		description: "Showcasing expert work.",
-		image: "/images/projects/portfolio.png",
-		tag: ["All", "AWS", "NextJS", "Tailwind"],
-		gitUrl: "https://github.com/ktptran/my-portfolio",
-		previewUrl: "https://ktptran.xyz",
-	},
-	{
-		id: 2,
 		title: "AI/ML Automated Inventory Detection",
 		description: "Recording fruit inventory storage.",
 		image: "/images/projects/inventory.png",
@@ -138,7 +129,7 @@ const projectsData = [
 		gitUrl: "https://github.com/ktptran/inventory-detection",
 	},
 	{
-		id: 3,
+		id: 2,
 		title: "Probability Appointment Scheduling",
 		description:
 			"Study for optimal reservation system for mental health clinic.",
@@ -149,20 +140,12 @@ const projectsData = [
 			"https://drive.google.com/open?id=1dXusDXDo6_l6Kpr9pTMdekr-tlyrh6nu",
 	},
 	{
-		id: 4,
+		id: 3,
 		title: "Youth Group ReactJS Website",
 		description: "Platform to centralize communication and marketing",
 		image: "/images/projects/youth-group.png",
 		tag: ["All", "ReactJS", "AWS"],
 		previewUrl: "https://www.chuathanhthan.org/",
-	},
-	{
-		id: 5,
-		title: "League of Legends @ UW Operations",
-		description: "Workshops & tooling to grow club systems.",
-		image: "/images/projects/lol-uw.png",
-		tag: ["All", "Discord", "Python", "Data Science"],
-		gitUrl: "https://github.com/ktptran/pcm_functions",
 	},
 ];
 
@@ -182,10 +165,6 @@ const achievementData = [
 		metric: "Avg CSAT",
 		value: "100",
 		postfix: "%",
-	},
-	{
-		metric: "years",
-		value: "4",
 	},
 ];
 

@@ -52,11 +52,25 @@ const Navbar = () => {
 				</div>
 				<div className="menu hidden md:block md:w-auto" id="navbar">
 					<ul className="flex p-4 md:p-0 sm:flex-row md:space-x-8">
-						{navLinks.map((link, index) => (
-							<li key={index}>
-								<NavLink href={link.path} title={link.title} />
-							</li>
-						))}
+						{navLinks.map((link, index) => {
+							const { path, title } = link;
+							if (title === "Contact") {
+								return (
+									<li
+										key={index}
+										className="px-3 py-1 sm:w-fit rounded-full mr-4 bg-gradient-to-br from-blue-500 via-primary-500 to-secondary-500 hover:bg-slate-200 text-white"
+									>
+										<NavLink href={path} title={title} />
+									</li>
+								);
+							} else {
+								return (
+									<li key={index} className="py-1 text-white">
+										<NavLink href={path} title={title} />
+									</li>
+								);
+							}
+						})}
 					</ul>
 				</div>
 			</div>

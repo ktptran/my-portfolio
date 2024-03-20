@@ -2,6 +2,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+import LinkedInIcon from "../../../public/svg/linkedin-icon.svg";
+
 import { TypeAnimation } from "react-type-animation";
 
 const HeroSection = () => {
@@ -33,27 +35,33 @@ const HeroSection = () => {
 						/>
 					</h1>
 					<p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-						Applying the latest AI/ML & cloud technology to evolve business
-						operations.
+						Applying the latest cloud technology to help customers evolve
+						business operations.
 					</p>
-					<div>
+					<div className="mt-2">
 						<button className="px-6 py-3 sm:w-fit rounded-full mr-4 bg-gradient-to-br from-blue-500 via-primary-500 to-secondary-500 hover:bg-slate-200 text-white">
 							<a
+								className="flex"
 								target="_blank"
 								rel="noopener noreferrer"
-								href="https://www.upwork.com/freelancers/~019aaf5668e1a71ef6?mp_source=share"
+								href="https://linkedin.com/in/ktptran"
 							>
-								Work With Me
+								Connect on{" "}
+								<Image
+									src={LinkedInIcon}
+									alt="LinkedIn Icon"
+									className="w-6 h-6 ml-1"
+								/>
 							</a>
 						</button>
-						<button className="px-1 py-1 sm:w-fit rounded-full bg-transparent bg-gradient-to-br from-blue-500 via-primary-500 to-secondary-500 hover:bg-slate-800 text-white mt-3">
+						<button className="px-1 py-1 sm:w-fit rounded-full bg-transparent bg-gradient-to-br from-blue-500 via-primary-500 to-secondary-500 hover:bg-slate-800 text-white">
 							<a
 								target="_blank"
 								rel="noopener noreferrer"
 								href="https://drive.google.com/file/d/1XzgJx714Ii6ws-FiInxLLtdmxDXMWtTX/view?usp=drive_link"
 							>
 								<span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2">
-									Download CV
+									Resume
 								</span>
 							</a>
 						</button>
@@ -65,11 +73,11 @@ const HeroSection = () => {
 					transition={{ duration: 0.5 }}
 					className="col-span-4 place-self-center mt-4 lg:mt-0"
 				>
-					<div className="rounded-full bg-[#212121] w-[350px] h-[350px] lg:w-[375px] lg:h-375px relative">
+					<div className="w-[350px] h-[350px] lg:w-[375px] lg:h-375px relative">
 						<Image
-							src="/images/kevin-tran.png"
+							src="/images/kevin-tran.jpeg"
 							alt="hero image"
-							className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 pb-8"
+							className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
 							width={280}
 							height={280}
 							priority={true}

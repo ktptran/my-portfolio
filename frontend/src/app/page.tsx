@@ -2,7 +2,6 @@
 import { NextUIProvider } from "@nextui-org/react";
 import AboutSection from "./components/AboutSection";
 import AchievementsSection from "./components/AchievementsSection";
-import EmailSection from "./components/EmailSection";
 import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
@@ -18,7 +17,6 @@ export default function Home() {
 					<AchievementsSection />
 					<AboutSection />
 					<ProjectsSection />
-					<EmailSection />
 				</div>
 				<Footer />
 			</main>

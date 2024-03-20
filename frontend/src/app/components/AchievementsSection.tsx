@@ -12,7 +12,7 @@ const AnimatedNumbers = dynamic(
 function AchievementsSection() {
 	return (
 		<div className="py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-			<div className="grid md:grid-cols-4 gap-8 md:gap-12 border-[#33353F] border rounded-md py-8 px-16 flex flex-row items-center justify-between">
+			<div className="grid md:grid-cols-3 gap-8 md:gap-12 border-[#33353F] border rounded-md py-8 px-16 flex flex-row items-center justify-between">
 				{achievementData.map((achievement, index) => (
 					<div
 						key={index}
