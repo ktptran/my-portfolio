@@ -141,7 +141,7 @@ const projectsData = [
 	},
 	{
 		id: 3,
-		title: "Youth Group ReactJS Website",
+		title: "ReactJS Web Platform",
 		description: "Platform to centralize communication and marketing",
 		image: "/images/projects/youth-group.png",
 		tag: ["All", "ReactJS", "AWS"],
