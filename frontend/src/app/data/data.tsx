@@ -179,7 +179,7 @@ const navLinks = [
 	},
 	{
 		title: "Contact",
-		path: "contact",
+		path: "mailto:kevintptran@gmail.com?subject=Let's chat.",
 	},
 ];
 

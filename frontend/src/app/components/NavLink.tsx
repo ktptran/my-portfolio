@@ -36,14 +36,24 @@ const onBtnClick = (e: any) => {
 	}, 100);
 };
 
-const NavLink = ({ href, title }: { href: any; title: any }) => (
-	<button
-		type={href}
-		className="block py-2 pl-3 pr-4 hover:text-[#ADB7BE] sm:text-xl rounded md:p-0 text-white"
-		onClick={(e) => onBtnClick(e)}
-	>
-		{title}
-	</button>
-);
+const NavLink = ({ href, title }: { href: any; title: any }) => {
+	if (title === "Contact") {
+		return (
+			<button className="block py-2 pl-3 pr-4 hover:text-[#ADB7BE] sm:text-xl rounded md:p-0 text-white">
+				<a href={href}>{title}</a>
+			</button>
+		);
+	} else {
+		return (
+			<button
+				type={href}
+				className="block py-2 pl-3 pr-4 hover:text-[#ADB7BE] sm:text-xl rounded md:p-0 text-white"
+				onClick={(e) => onBtnClick(e)}
+			>
+				{title}
+			</button>
+		);
+	}
+};
 
 export default NavLink;

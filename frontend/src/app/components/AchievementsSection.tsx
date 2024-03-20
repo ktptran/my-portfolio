@@ -16,7 +16,7 @@ function AchievementsSection() {
 				{achievementData.map((achievement, index) => (
 					<div
 						key={index}
-						className="flex flex-col items-center justify-center mx-4"
+						className="flex flex-col items-center justify-center mx-4 w-full align-center"
 					>
 						<h2 className="text-white text-center text-4xl font-bold flex flex-row">
 							{achievement.prefix}
