@@ -11,12 +11,26 @@ import { navLinks } from "../data/data";
 
 const MenuOverlay = ({ links }: { links: any }) => {
 	return (
-		<ul className="flex flex-col py-4 items-center">
-			{links.map((link: { path: any; title: any }, index: Key) => (
-				<li key={index}>
-					<NavLink href={link.path} title={link.title} />
-				</li>
-			))}
+		<ul className="flex flex-col items-center pb-2">
+			{links.map((link: { path: any; title: any }, index: Key) => {
+				const { title, path } = link;
+				if (title === "Contact") {
+					return (
+						<li
+							key={index}
+							className="px-1 py-0.5 sm:w-fit rounded-full bg-gradient-to-br from-blue-500 via-primary-500 to-secondary-500 hover:bg-slate-200 text-white"
+						>
+							<NavLink href={path} title={title} />
+						</li>
+					);
+				} else {
+					return (
+						<li key={index} className="text-white">
+							<NavLink href={link.path} title={link.title} />
+						</li>
+					);
+				}
+			})}
 		</ul>
 	);
 };
@@ -26,7 +40,7 @@ const Navbar = () => {
 
 	return (
 		<nav className="fixed mx-auto border-b-1 border-[#33353F] top-0 left-0 right-0 z-10 bg-[#121212] bg-opacity-100">
-			<div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
+			<div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto py-8 px-4 xl:gap-16 sm:py-8 xl:px-16">
 				<Link
 					href={"/"}
 					className="text-xl md:text-5xl text-white font-semibold"

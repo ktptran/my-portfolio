@@ -7,10 +7,8 @@ const getOffset = (elID: string) => {
 	if (vw > 500) {
 		return 100;
 	} else {
-		if (elID === "about") {
-			return 200;
-		} else if (elID === "projects") {
-			return 220;
+		if (elID === "projects" || elID === "about") {
+			return 240;
 		} else {
 			return 125;
 		}

@@ -35,13 +35,13 @@ const TabButton = ({
 
 const Certifications = () => {
 	return (
-		<div className="grid md:grid-cols-6 md:px-32 sm:grid-cols-3 sm:px-16">
+		<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 sm:px-4 xl:px-32">
 			{certs.map((value, index) => {
 				const { href, image, alt } = value;
 				return (
 					<a
 						key={index}
-						className="underline"
+						className="flex flex-col items-center justify-center w-full align-center"
 						target="_blank"
 						rel="noopener noreferrer"
 						href={href}
@@ -69,7 +69,7 @@ const AboutSection = () => {
 				About Me
 			</h2>
 			<Certifications />
-			<div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py16 xl:px-16">
+			<div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 sm:py-16 xl:px-16">
 				<div>
 					<p className="text-base md:text-lg">
 						I am a Solutions Architect with a passion for aiding customers
@@ -80,22 +80,29 @@ const AboutSection = () => {
 						time, I enjoy reading, running, and writing.
 					</p>
 				</div>
-				<div className="mt-4 md:mt-0 text-left flex flex-col h-full">
+				<div className="mt-8 md:mt-0 text-left flex flex-col flex-grow">
 					{skillsData.map((value, index) => {
 						const { proficiency, title, technology } = value;
 						return (
 							<div key={index} className="mt-1">
 								<h5 className="font-bold">{title + " "}</h5>
-								<div className="italic">
-									{technology.map((value, index) => {
-										const input =
-											index !== technology.length - 1 ? value + ", " : value;
-										return (
-											<span key={index} className="text-sm">
-												{input}
-											</span>
-										);
-									})}
+								<div className="italic flex flex-row justify-between pb-1">
+									<div className="mr-2 flex flex-col">
+										<span key={index} className="text-sm sm:text-xs mt-auto">
+											{technology.map((value, index) => {
+												const input =
+													index !== technology.length - 1
+														? value + ", "
+														: value;
+												return <>{input}</>;
+											})}
+										</span>
+									</div>
+									<div className="h-auto flex flex-col">
+										<span className="text-sm sm:text-xs mt-auto">
+											{proficiency * 10}%
+										</span>
+									</div>
 								</div>
 								<div className="w-full bg-gray-200 rounded-full h-1.5 mb-4 dark:bg-gray-700">
 									<div

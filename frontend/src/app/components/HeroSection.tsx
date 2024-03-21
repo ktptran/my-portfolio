@@ -8,7 +8,7 @@ import { TypeAnimation } from "react-type-animation";
 
 const HeroSection = () => {
 	return (
-		<section className="lg:py-16  py-8 px-4 xl:gap-16 sm:py16 xl:px-16">
+		<section className="lg:py-8 px-4 xl:gap-16 xl:px-16">
 			<div className="grid grid-cols-1 sm:grid-cols-12">
 				<motion.div
 					initial={{ opacity: 0, scale: 0.5 }}
@@ -35,8 +35,8 @@ const HeroSection = () => {
 						/>
 					</h1>
 					<p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-						Applying the latest cloud technology to help customers evolve
-						business operations.
+						Applying the latest AI/ML & cloud technology to help customers
+						evolve business operations.
 					</p>
 					<div className="mt-2">
 						<button className="px-6 py-3 sm:w-fit rounded-full mr-4 bg-gradient-to-br from-blue-500 via-primary-500 to-secondary-500 hover:bg-slate-200 text-white">
@@ -54,7 +54,7 @@ const HeroSection = () => {
 								/>
 							</a>
 						</button>
-						<button className="px-1 py-1 sm:w-fit rounded-full bg-transparent bg-gradient-to-br from-blue-500 via-primary-500 to-secondary-500 hover:bg-slate-800 text-white">
+						<button className="px-1 py-1 sm:w-fit rounded-full bg-transparent bg-gradient-to-br from-blue-500 via-primary-500 to-secondary-500 hover:bg-slate-800 text-white my-4">
 							<a
 								target="_blank"
 								rel="noopener noreferrer"
@@ -73,7 +73,7 @@ const HeroSection = () => {
 					transition={{ duration: 0.5 }}
 					className="col-span-4 place-self-center mt-4 lg:mt-0"
 				>
-					<div className="w-[350px] h-[350px] lg:w-[375px] lg:h-375px relative">
+					<div className="w-[250px] h-[250px] md:w-[225px] md:h-[225px] lg:w-[300px] lg:h-[300px] my-8 relative">
 						<Image
 							src="/images/kevin-tran.jpeg"
 							alt="hero image"
