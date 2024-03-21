@@ -1,8 +1,10 @@
-interface TabData {
-	title: string;
-	id: string;
-	content: JSX.Element;
-}
+import { StaticImageData } from "next/image";
+import DataSpec from "../../../public/images/certs/data-specialty.png";
+import DevAssoc from "../../../public/images/certs/dev-associate.png";
+import MLSpec from "../../../public/images/certs/ml-specialty.png";
+import SAPro from "../../../public/images/certs/sa-professional.png";
+import SysOpsAssoc from "../../../public/images/certs/sysops-associate.png";
+import TechU from "../../../public/images/certs/techu-grad.png";
 
 interface Meta {
 	type: "website";
@@ -23,99 +25,74 @@ interface Meta {
 	authors: any;
 }
 
-const aboutTabData: TabData[] = [
+interface certData {
+	href: string;
+	image: StaticImageData;
+	alt: string;
+}
+
+interface skills {
+	title: string;
+	technology: string[];
+	proficiency: number;
+}
+
+const certs: certData[] = [
 	{
-		title: "Skills",
-		id: "skills",
-		content: (
-			<ul className="list-disc pl-2">
-				<li>ReactJS</li>
-				<li>NextJS</li>
-				<li>Node.js</li>
-				<li>Tailwind</li>
-				<li>Javascript</li>
-				<li>Golang</li>
-				<li>AWS Cloud Development Kit (CDK)</li>
-				<li>AWS Serverless Application Model (SAM)</li>
-			</ul>
-		),
+		href: "https://www.credly.com/badges/a1b4a848-8391-477a-8705-8c341a52bf4d",
+		image: TechU,
+		alt: "AWS TechU Graduate",
 	},
 	{
-		title: "Education",
-		id: "education",
-		content: (
-			<ul className="list-disc pl-2">
-				<li>
-					<a
-						className="underline"
-						target="_blank"
-						rel="noopener noreferrer"
-						href="https://www.credly.com/badges/a1b4a848-8391-477a-8705-8c341a52bf4d"
-					>
-						AWS TechU
-					</a>
-				</li>
-				<li>BS Applied Math @ University of Washington, Seattle</li>
-			</ul>
-		),
+		href: "https://www.credly.com/badges/fa538213-b665-4635-945d-6c5648895305",
+		image: SAPro,
+		alt: "Solutions Architect Professional",
 	},
 	{
-		title: "Certifications",
-		id: "certifications",
-		content: (
-			<ul className="list-disc pl-2">
-				<li>
-					<a
-						className="underline"
-						target="_blank"
-						rel="noopener noreferrer"
-						href="https://www.credly.com/badges/fa538213-b665-4635-945d-6c5648895305"
-					>
-						AWS Solutions Architect - Professional
-					</a>
-				</li>
-				<li>
-					<a
-						className="underline"
-						target="_blank"
-						rel="noopener noreferrer"
-						href="https://www.credly.com/badges/6a1765c4-c906-4d1f-b625-72b1e78b9c35"
-					>
-						AWS Data Analytics - Specialty
-					</a>
-				</li>
-				<li>
-					<a
-						className="underline"
-						target="_blank"
-						rel="noopener noreferrer"
-						href="https://www.credly.com/badges/e2681ad2-0dd4-41ff-bae5-d776cedbdc18"
-					>
-						AWS Machine Learning - Specialty
-					</a>
-				</li>
-				<li>
-					<a
-						className="underline"
-						target="_blank"
-						rel="noopener noreferrer"
-						href="https://www.credly.com/badges/f40429e4-17ad-4ca5-9808-222380272da9"
-					>
-						AWS Developer - Associate
-					</a>
-				</li>
-				<li>
-					<a
-						className="underline"
-						target="_blank"
-						rel="noopener noreferrer"
-						href="https://www.credly.com/badges/1e5116bc-3ef4-475c-9a1f-714f0125df0a"
-					>
-						AWS SysOps Administrator - Associate
-					</a>
-				</li>
-			</ul>
-		),
+		href: "https://www.credly.com/badges/e2681ad2-0dd4-41ff-bae5-d776cedbdc18",
+		image: MLSpec,
+		alt: "Machine Learning Specialty",
+	},
+	{
+		href: "https://www.credly.com/badges/6a1765c4-c906-4d1f-b625-72b1e78b9c35",
+		image: DataSpec,
+		alt: "Data ANalytics Specialty",
+	},
+
+	{
+		href: "https://www.credly.com/badges/f40429e4-17ad-4ca5-9808-222380272da9",
+		image: DevAssoc,
+		alt: "Developer Associate",
+	},
+	{
+		href: "https://www.credly.com/badges/1e5116bc-3ef4-475c-9a1f-714f0125df0a",
+		image: SysOpsAssoc,
+		alt: "Sys Ops Associate",
+	},
+];
+
+const skillsData: skills[] = [
+	{
+		title: "Cloud Technology",
+		technology: ["AWS CDK", "AWS SAM", "Docker", "Kubernetes"],
+		proficiency: 8.5,
+	},
+	{
+		title: "Data Science - AI/ML",
+		technology: ["LangChain", "LLM", "Python", "Jupyter Notebook"],
+		proficiency: 7.5,
+	},
+	{
+		title: "Software Development",
+		technology: [
+			"ReactJS",
+			"NextJS",
+			"Tailwind",
+			"JavaScript",
+			"Node.js",
+			"Golang",
+		],
+		proficiency: 8,
 	},
 ];
 
@@ -206,4 +183,4 @@ const meta: Meta = {
 	],
 };
 
-export { aboutTabData, achievementData, meta, navLinks, projectsData };
+export { achievementData, certs, meta, navLinks, projectsData, skillsData };

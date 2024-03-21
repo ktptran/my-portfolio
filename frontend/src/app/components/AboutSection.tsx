@@ -2,7 +2,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useTransition } from "react";
-import { aboutTabData } from "../data/data";
+
+import { certs, skillsData } from "../data/data";
 
 const TabButton = ({
 	active,
@@ -32,6 +33,27 @@ const TabButton = ({
 	);
 };
 
+const Certifications = () => {
+	return (
+		<div className="grid md:grid-cols-6 md:px-32 sm:grid-cols-3 sm:px-16">
+			{certs.map((value, index) => {
+				const { href, image, alt } = value;
+				return (
+					<a
+						key={index}
+						className="underline"
+						target="_blank"
+						rel="noopener noreferrer"
+						href={href}
+					>
+						<Image src={image} alt={alt} className="w-36 h-36" />
+					</a>
+				);
+			})}
+		</div>
+	);
+};
+
 const AboutSection = () => {
 	const [tab, setTab] = useState("skills");
 	const [isPending, startTransition] = useTransition();
@@ -43,16 +65,12 @@ const AboutSection = () => {
 	};
 	return (
 		<section className="text-white" id="about">
+			<h2 className="text-center text-4xl font-bold text-white mt-4 mb-4 md:mb-6">
+				About Me
+			</h2>
+			<Certifications />
 			<div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py16 xl:px-16">
-				<Image
-					src="/images/about-image.jpeg"
-					alt="about-image"
-					width={500}
-					height={500}
-					priority={true}
-				/>
-				<div className="mt-4 md:mt-0 text-left flex flex-col h-full">
-					<h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
+				<div>
 					<p className="text-base md:text-lg">
 						I am a Solutions Architect with a passion for aiding customers
 						develop industry-leading solutions. Previously, I supported both
@@ -61,29 +79,33 @@ const AboutSection = () => {
 						inventory detection, and heterogeneous data unification. In my free
 						time, I enjoy reading, running, and writing.
 					</p>
-					<div className="flex flex-row justify-start mt-4">
-						<TabButton
-							selectTab={() => handleTabChange("skills")}
-							active={tab === "skills"}
-						>
-							Skills
-						</TabButton>
-						<TabButton
-							selectTab={() => handleTabChange("certifications")}
-							active={tab === "certifications"}
-						>
-							Certifications
-						</TabButton>
-						<TabButton
-							selectTab={() => handleTabChange("education")}
-							active={tab === "education"}
-						>
-							Education
-						</TabButton>
-					</div>
-					<div className="mt-4">
-						{aboutTabData.find((t) => t.id === tab)?.content}
-					</div>
+				</div>
+				<div className="mt-4 md:mt-0 text-left flex flex-col h-full">
+					{skillsData.map((value, index) => {
+						const { proficiency, title, technology } = value;
+						return (
+							<div key={index} className="mt-1">
+								<h5 className="font-bold">{title + " "}</h5>
+								<div className="italic">
+									{technology.map((value, index) => {
+										const input =
+											index !== technology.length - 1 ? value + ", " : value;
+										return (
+											<span key={index} className="text-sm">
+												{input}
+											</span>
+										);
+									})}
+								</div>
+								<div className="w-full bg-gray-200 rounded-full h-1.5 mb-4 dark:bg-gray-700">
+									<div
+										className="bg-blue-500 h-1.5 rounded-full dark:bg-blue-500"
+										style={{ width: `${proficiency * 10}%` }}
+									></div>
+								</div>
+							</div>
+						);
+					})}
 				</div>
 			</div>
 		</section>
