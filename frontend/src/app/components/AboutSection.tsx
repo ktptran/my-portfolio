@@ -94,7 +94,7 @@ const AboutSection = () => {
 													index !== technology.length - 1
 														? value + ", "
 														: value;
-												return <>{input}</>;
+												return <span key={index}>{input}</span>;
 											})}
 										</span>
 									</div>
