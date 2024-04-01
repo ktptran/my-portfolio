@@ -99,8 +99,8 @@ const skillsData: skills[] = [
 const projectsData = [
 	{
 		id: 1,
-		title: "AI/ML Automated Inventory Detection",
-		description: "Recording fruit inventory storage.",
+		title: "AI/ML Inventory Detection",
+		description: "Recording fruit inventory automatically.",
 		image: "/images/projects/inventory.png",
 		tag: ["All", "AWS", "ReactJS", "AI/ML"],
 		gitUrl: "https://github.com/ktptran/inventory-detection",
