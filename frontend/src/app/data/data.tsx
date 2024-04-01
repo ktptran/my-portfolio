@@ -124,7 +124,7 @@ const projectsData = [
 		description: "Platform to centralize communication and marketing.",
 		image: "/images/projects/youth-group.png",
 		tag: ["All", "ReactJS", "AWS"],
-		gitUrl: "https://github.com/jp-nguyen/dctt-website",
+		// gitUrl: "https://github.com/jp-nguyen/dctt-website",
 		previewUrl: "https://www.chuathanhthan.org/",
 	},
 ];
