@@ -104,6 +104,8 @@ const projectsData = [
 		image: "/images/projects/inventory.png",
 		tag: ["All", "AWS", "ReactJS", "AI/ML"],
 		gitUrl: "https://github.com/ktptran/inventory-detection",
+		previewUrl:
+			"https://drive.google.com/file/d/12beNtpipx0S9smraAIYWQzY5s9VZptTQ/view?usp=sharing",
 	},
 	{
 		id: 2,
