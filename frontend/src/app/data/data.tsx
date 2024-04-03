@@ -74,7 +74,14 @@ const certs: certData[] = [
 const skillsData: skills[] = [
 	{
 		title: "Cloud Technology",
-		technology: ["AWS CDK", "AWS SAM", "Docker", "Kubernetes"],
+		technology: [
+			"AWS CDK",
+			"Docker",
+			"Kubernetes",
+			"Well-Architected Framework",
+			"CI/CD",
+			"DevOps",
+		],
 		proficiency: 8.5,
 	},
 	{
