@@ -1,7 +1,7 @@
 # Environment
 scripts/secret_env.sh
 scripts/secret_env.sh-e
-
+.DS_Store
 # Logs
 logs
 *.log

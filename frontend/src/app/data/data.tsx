@@ -75,12 +75,12 @@ const skillsData: skills[] = [
 	{
 		title: "Cloud Technology",
 		technology: [
+			"Terraform",
 			"AWS CDK",
 			"Docker",
 			"Kubernetes",
-			"Well-Architected Framework",
-			"CI/CD",
-			"DevOps",
+			"Apache Kafka",
+			"Confluent",
 		],
 		proficiency: 8.5,
 	},
@@ -106,24 +106,23 @@ const skillsData: skills[] = [
 const projectsData = [
 	{
 		id: 1,
-		title: "AI/ML Inventory Detection",
-		description: "Recording fruit inventory automatically.",
-		image: "/images/projects/inventory.png",
-		tag: ["All", "AWS", "ReactJS", "AI/ML"],
-		gitUrl: "https://github.com/ktptran/inventory-detection",
-		previewUrl:
-			"https://drive.google.com/file/d/12beNtpipx0S9smraAIYWQzY5s9VZptTQ/view?usp=sharing",
+		title:
+			"Provisioning EC2 + Kafka using Terraform to Load Data into SingleStore",
+		description:
+			"Utilizing SingleStore native integration services to ingest data.",
+		image: "/images/projects/tf-s2.png",
+		tag: ["All", "AWS", "Kafka", "SingleStore", "Terraform"],
+		gitUrl: "https://github.com/s2-ktran/s2-iac-ec2-kafka",
 	},
 	{
 		id: 2,
-		title: "Probability Appointment Scheduling",
-		description:
-			"Study for optimal reservation system for mental health clinic.",
-		image: "/images/projects/appointment-scheduling.png",
-		tag: ["All", "Python", "Probability"],
-		gitUrl: "https://github.com/warandstar/math381hallhealth",
+		title: "AI/ML Inventory Detection",
+		description: "Recording fruit inventory automatically.",
+		image: "/images/projects/inventory.png",
+		tag: ["All", "AWS", "ReactJS", "AI/ML", "AWS CDK"],
+		gitUrl: "https://github.com/ktptran/inventory-detection",
 		previewUrl:
-			"https://drive.google.com/open?id=1dXusDXDo6_l6Kpr9pTMdekr-tlyrh6nu",
+			"https://drive.google.com/file/d/12beNtpipx0S9smraAIYWQzY5s9VZptTQ/view?usp=sharing",
 	},
 	{
 		id: 3,
@@ -133,6 +132,17 @@ const projectsData = [
 		tag: ["All", "ReactJS", "AWS"],
 		// gitUrl: "https://github.com/jp-nguyen/dctt-website",
 		previewUrl: "https://www.chuathanhthan.org/",
+	},
+	{
+		id: 4,
+		title: "Probability Appointment Scheduling",
+		description:
+			"Study for optimal reservation system for mental health clinic.",
+		image: "/images/projects/appointment-scheduling.png",
+		tag: ["All", "Python", "Probability"],
+		gitUrl: "https://github.com/warandstar/math381hallhealth",
+		previewUrl:
+			"https://drive.google.com/open?id=1dXusDXDo6_l6Kpr9pTMdekr-tlyrh6nu",
 	},
 ];
 
